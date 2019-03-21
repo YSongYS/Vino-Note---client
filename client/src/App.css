@@ -1,33 +1,56 @@
-/* .App {
-  text-align: center;
+
+/* Page */
+.page-container {
+  margin: 25px;
+  align-content: center;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+/* LogCard */
+
+/* CardFront */
+.card-front {
+  margin: 10px;
+  height: 400px;
+  width: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-front:hover {
+  cursor: pointer;
+  -webkit-animation: pulse 1s;
+  animation: pulse 2s infinite;
+  /* transform: scale(1.05) */
 }
 
-.App-link {
-  color: #61dafb;
+.card-image-front {
+  height: 400px;
+  width: 290px;
+  overflow: hidden;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+/* CardBack */
+.card-back {
+  margin: 10px;
+  height: 400px;
+  width: 300px;
+  display: inline-flex;
+}
+
+.card-image-back {
+  height: 400px;
+  width: 290px;
+  overflow: hidden;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-back:hover {
+  cursor: pointer;
+  -webkit-animation: pulse 1s;
+  animation: pulse 2s infinite;
+  /* transform: scale(1.05) */
+}
