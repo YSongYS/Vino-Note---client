@@ -1,22 +1,51 @@
 /* Header */
-.header_image {
-  height:200px;
-  background-image: url('/header_image.jpg');
+.main-header {
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  /* background-image: url('/Logo.png');
+  background-position: center;
+  background-repeat: no-repeat; */
   opacity: 1;
   text-align: center;
+}
+
+.header-name {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 90px;
+}
+
+.header-slogan {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 30px;
+}
+
+/* Nav */
+.ui.pointing.secondary.menu {
+  margin: 25px;
+  border-bottom: 2px solid rgba(111, 9, 25, 0.8);
+  background-color: white;
 }
 
 /* Page */
 .page-container {
   margin: 25px;
+  margin-top: 40px;
   align-content: center;
+  text-align: center;
+}
+
+/* LogList */
+.card-list {
+  width: 90%;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 /* LogCard */
 
 /* CardFront */
 .card-front {
-  margin: 10px;
+  margin: 20px;
   height: 400px;
   width: 290px;
 }
@@ -30,7 +59,7 @@
 
 .card-image-front {
   height: 400px;
-  width: 290px;
+  width: 100%;
   overflow: hidden;
   background-size: contain;
   background-position: center;
@@ -39,10 +68,12 @@
 
 /* CardBack */
 .card-back {
-  margin: 10px;
+  margin: 20px;
   height: 400px;
   width: 290px;
   display: inline-flex;
+  text-align: center;
+
 }
 
 .card-image-back {
@@ -65,23 +96,8 @@
   text-align: center;
 }
 
-/* Chart */
-
-.chart {
-  background: 
-    conic-gradient(
-      red 4%, 
-      gray 0 8%, 
-      blue 0 17%,
-      yellow 0 48%,
-      purple 0 54%,
-      orange 0
-    );
-  border-radius: 50%;
-  width: 50%;
-  height: 0;
-  padding-top: 50%;
-  float: left;
-  padding-right: 20px;
-}
-
+/* CalendarLog */ 
+.react-calendar-heatmap .color-scale-1 { fill: #5cca3b; }
+.react-calendar-heatmap .color-scale-2 { fill: #d1963d; }
+.react-calendar-heatmap .color-scale-3 { fill: #88294d; }
+.react-calendar-heatmap .color-scale-4 { fill: #8d0422; }

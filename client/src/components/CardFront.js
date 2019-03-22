@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Flag } from 'semantic-ui-react'
 
 export default class CardFront extends Component {
 
@@ -12,9 +12,9 @@ export default class CardFront extends Component {
                 >
                 </div>
                 <Card.Content>
-                    <Card.Header>Wine Name</Card.Header>
+                    <Card.Header>Rioja Reserva 2014 Muga</Card.Header>
                     <Card.Meta>
-                        <span className='vintage-region'>2015, Spain</span>
+                        <span className='region-vintage'><Flag name='spain' /> 2014</span>
                     </Card.Meta>
                 </Card.Content>
             </Card>
