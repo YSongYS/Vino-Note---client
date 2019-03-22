@@ -1,7 +1,7 @@
 /* Header */
 .header_image {
   height:200px;
-  background-image: url('/header_image.jpg');
+  background-color:lightgrey;
   opacity: 1;
   text-align: center;
 }
@@ -68,10 +68,10 @@
 /* Chart */
 
 .chart {
-  background: 
+  background:
     conic-gradient(
-      red 4%, 
-      gray 0 8%, 
+      red 4%,
+      gray 0 8%,
       blue 0 17%,
       yellow 0 48%,
       purple 0 54%,
@@ -85,3 +85,55 @@
   padding-right: 20px;
 }
 
+
+/* Log form */
+/* Wine info */
+.scan-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wine-info {
+  display: flex;
+  justify-content: center;
+}
+
+/* Color plate */
+.color_plate {
+  height:75px;
+  width:75px;
+  background-color: #a21d3c;
+  border-radius: 50%;
+  display:inline-block;
+  margin:15px;
+  font-size:7px;
+  text-align: center;
+  justify-content: center;
+  word-wrap: break-word;
+}
+
+.color_plate:hover {
+  cursor: pointer;
+  -webkit-animation: pulse 1s;
+  animation: pulse 2s infinite;
+  transform: scale(0.5)
+}
+
+
+
+.color_plate_container {
+  margin-left: 20px;
+}
+
+.selected_color {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+  align-items: center;
+}
+
+.colorTile {
+  height:50px;
+  width:50px;
+}
