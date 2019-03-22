@@ -1,9 +1,11 @@
 import React from 'react'
 import LogList from '../components/LogList';
+// import Stats from '../components/Stats';
 
 class Page extends React.Component {
     
     state = {
+        minhaOrSong: false,
         logs: []
     }
 
@@ -11,7 +13,7 @@ class Page extends React.Component {
     render() {
         return (
             <div className='page-container'>
-                <LogList />
+                {this.state.minhaOrSong ? null : <LogList />}
             </div>
         )
     }

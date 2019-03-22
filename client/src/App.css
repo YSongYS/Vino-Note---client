@@ -1,9 +1,7 @@
-
 /* Page */
 .page-container {
   margin: 25px;
   align-content: center;
-
 }
 
 /* LogCard */
@@ -12,7 +10,7 @@
 .card-front {
   margin: 10px;
   height: 400px;
-  width: 300px;
+  width: 290px;
 }
 
 .card-front:hover {
@@ -35,7 +33,7 @@
 .card-back {
   margin: 10px;
   height: 400px;
-  width: 300px;
+  width: 290px;
   display: inline-flex;
 }
 
@@ -51,6 +49,31 @@
 .card-back:hover {
   cursor: pointer;
   -webkit-animation: pulse 1s;
-  animation: pulse 2s infinite;
+  animation: pulse 2s ;
   /* transform: scale(1.05) */
 }
+
+.name-back {
+  text-align: center;
+}
+
+/* Chart */
+
+.chart {
+  background: 
+    conic-gradient(
+      red 4%, 
+      gray 0 8%, 
+      blue 0 17%,
+      yellow 0 48%,
+      purple 0 54%,
+      orange 0
+    );
+  border-radius: 50%;
+  width: 50%;
+  height: 0;
+  padding-top: 50%;
+  float: left;
+  padding-right: 20px;
+}
+
