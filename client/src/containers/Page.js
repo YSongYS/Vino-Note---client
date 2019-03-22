@@ -1,11 +1,12 @@
 import React from 'react'
 import LogList from '../components/LogList';
+// import Stats from '../components/Stats';
 import LogForm from '../components/LogForm';
 
 class Page extends React.Component {
 
     state = {
-        minhaOrSong: true,
+        minhaOrSong: false,
         logs: []
     }
 
@@ -13,7 +14,7 @@ class Page extends React.Component {
     render() {
         return (
             <div className='page-container'>
-                {this.state.minhaOrSong? <LogForm />:<LogList />}
+                {this.state.minhaOrSong? <LogForm /> : <LogList />}
             </div>
         )
     }
