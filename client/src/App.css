@@ -1,3 +1,11 @@
+/* Header */
+.header_image {
+  height:200px;
+  background-image: url('/header_image.jpg');
+  opacity: 1;
+  text-align: center;
+}
+
 /* Page */
 .page-container {
   margin: 25px;
