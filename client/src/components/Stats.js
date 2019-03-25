@@ -25,8 +25,8 @@ class Stats extends React.Component {
                         <Statistic>
                         <Statistic.Value text>
                             france <br/>
-                            spain  <br/>                     
-                            italy  <br/>                    
+                            spain  <br/>
+                            italy  <br/>
                         </Statistic.Value>
                         <Statistic.Label>Top 3 Countries</Statistic.Label>
                         </Statistic>
@@ -34,15 +34,15 @@ class Stats extends React.Component {
                         <Statistic>
                         <Statistic.Value text>
                             no1 <br/>
-                            no2  <br/>                     
-                            no3  <br/>                        
+                            no2  <br/>
+                            no3  <br/>
                         </Statistic.Value>
                         <Statistic.Label>Top 3 variety</Statistic.Label>
                         </Statistic>
 
                         {/* <Statistic>
                         <Statistic.Value>
-                 
+
                         </Statistic.Value>
                         <Statistic.Label>Favorite Region</Statistic.Label>
                         </Statistic> */}
@@ -50,13 +50,13 @@ class Stats extends React.Component {
                     </Grid.Column>
                 </Grid>
             </Segment>
-            
+
         )
     }
 }
 
 export default Stats
 
-// What kind of wine 
+// What kind of wine
 // region of wines that I've tried
 // number of wines that I tried per month
