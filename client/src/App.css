@@ -96,7 +96,6 @@
   text-align: center;
 }
 
-<<<<<<< HEAD
 /* Chart */
 
 .chart {
@@ -169,6 +168,7 @@
   height:50px;
   width:50px;
 }
+
 /* Smell form */
 .wheel-container {
   height:500px;
@@ -176,6 +176,12 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+tspan {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: sans-serif;
 }
 
 /* CalendarLog */
