@@ -8,7 +8,8 @@ import React from 'react';
 class SmellForm extends React.Component {
 
   componentDidMount() {
-    let mainWheel = new window.wheelnav('divWheel-00', null, 550);
+
+    let mainWheel = new window.wheelnav('divWheel-00', null, 500);
     let primary = new window.wheelnav('divWheel-01', mainWheel.raphael);
     let secondary = new window.wheelnav('divWheel-02', primary.raphael);
     let tertiary = new window.wheelnav('divWheel-03', secondary.raphael);
@@ -49,7 +50,7 @@ class SmellForm extends React.Component {
     flaw.createWheel(["Cork Taint", "Sulfides \n and \n Mercaptans", "Brettanomyces", "Madeirized \n or \n Cooked", "Volatile \n Acidity"]);
 
     // hide sub circle
-    for(let x = 0; x < wheelArr.length; x++) { 
+    for(let x = 0; x < wheelArr.length; x++) {
       for (const y in wheelArr[x].navItems) {
         wheelArr[x].navItems[y].navItem.hide();
       }
@@ -76,8 +77,9 @@ class SmellForm extends React.Component {
 
 
 
-    
+
   }
+
 
     render() {
 

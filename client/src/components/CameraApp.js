@@ -1,32 +1,26 @@
 import React from 'react'
 import Camera from 'react-html5-camera-photo';
+import { Button, Image } from 'semantic-ui-react';
 import 'react-html5-camera-photo/build/css/index.css';
- 
+
 class CameraApp extends React.Component {
-  state = {
-    photo: undefined
-  }
 
-  onTakePhoto (dataUri) {
-    this.setState({photo: dataUri})
-  }
-
-  onCameraStop () {
-    console.log('save the photo and go back to the form');
-  }
- 
   render () {
     return (
       <div className="App">
-        <Camera
-          onTakePhoto = { (dataUri) => { this.onTakePhoto(dataUri); } }
+        {!this.props.image ? <Camera
+          onTakePhoto = { (dataUri) => this.props.onTakePhoto(dataUri) }
           idealResolution = {{width: 640, height: 480}}
-        />
-        {this.state.photo ? <img src={this.state.photo} alt='wine'/> : null }
-        <button className='camera-stop-btn' onClick={this.onCameraStop}>Camera Stop</button>
+        /> :
+        <div>
+        <Image src={this.props.image} alt='wine' size='massive'/>
+        <br/>
+        <Button onClick={this.props.onCameraRetake} positive>Retake</Button>
+        </div>
+      }
       </div>
     );
   }
 }
- 
+
 export default CameraApp;
