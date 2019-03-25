@@ -171,17 +171,18 @@
 
 /* Smell form */
 .wheel-container {
-  height:500px;
-  width:500px;
+  height:550px;
+  width:550px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 tspan {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   font-family: sans-serif;
+  color: white;
 }
 
 /* CalendarLog */

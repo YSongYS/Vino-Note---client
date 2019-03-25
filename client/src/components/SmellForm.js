@@ -8,11 +8,11 @@ import React from 'react';
 class SmellForm extends React.Component {
 
   componentDidMount() {
-    let mainWheel = new window.wheelnav('divWheelOne', null, 500);
-    let primary = new window.wheelnav('divWheelTwo', mainWheel.raphael);
-    let secondary = new window.wheelnav('divWheelThree', primary.raphael);
-    let tertiary = new window.wheelnav('divWheelFour', secondary.raphael);
-    let flaw = new window.wheelnav('divWheelFive', tertiary.raphael);
+    let mainWheel = new window.wheelnav('divWheel-00', null, 550);
+    let primary = new window.wheelnav('divWheel-01', mainWheel.raphael);
+    let secondary = new window.wheelnav('divWheel-02', primary.raphael);
+    let tertiary = new window.wheelnav('divWheel-03', secondary.raphael);
+    let flaw = new window.wheelnav('divWheel-04', tertiary.raphael);
 
     let wheelArr = [primary, secondary, tertiary, flaw]
 
@@ -24,23 +24,29 @@ class SmellForm extends React.Component {
     mainWheel.sliceSelectedPathCustom = mainWheel.slicePathCustom;
     mainWheel.sliceInitPathCustom = mainWheel.slicePathCustom;
     mainWheel.clickModeRotate = false;
+    mainWheel.colors = ["#92BBB0", "#722143", "#351A2D", "#B73A45"]
+    mainWheel.titleAttr = { fill: "#fff", stroke: "none", cursor: 'pointer' };
+    mainWheel.titleHoverAttr = { fill: "#222", cursor: 'pointer', stroke: "none" };
+    mainWheel.titleSelectedAttr = { fill: "#fff", cursor: 'pointer', stroke: "none" };
 
 
     for(let x = 0; x < wheelArr.length; x++) {
       wheelArr[x].slicePathFunction = window.slicePath().DonutSlice;
       wheelArr[x].slicePathCustom = window.slicePath().DonutSliceCustomization();
-      wheelArr[x].slicePathCustom.minRadiusPercent = 0.6;
+      wheelArr[x].slicePathCustom.minRadiusPercent = 0.62;
       wheelArr[x].slicePathCustom.maxRadiusPercent = 0.9;
       wheelArr[x].sliceSelectedPathCustom = wheelArr[x].slicePathCustom;
       wheelArr[x].sliceInitPathCustom = wheelArr[x].slicePathCustom;
       wheelArr[x].clickModeRotate = false;
+      wheelArr[x].colors = ["#92BBB0", "#722143", "#351A2D", "#B73A45"]
+      wheelArr[x].titleAttr = { font: this.titleFont, fill: "#fff", stroke: "none", cursor: 'pointer' };
     }
 
     mainWheel.createWheel(['Primary','Secondary','Tertiary','Flaws']);
     primary.createWheel(["Flower", "Citrus", "Tree Fruit", "Tropical Fruit", "Red Fruit", "Black Fruit", "Dried Fruit", "Noble Rot", "Spice", "Vegetable", "Earth"]);
     secondary.createWheel(["Microbial"]);
-    tertiary.createWheel(["Oak Aging", "General Aging"]);
-    flaw.createWheel(["Cork Taint", "Sulfides and Mercaptans", "Brettanomyces", "Madeirized or Cooked", "Volatile Acidity"]);
+    tertiary.createWheel(["Oak \n Aging", "General \n Aging"]);
+    flaw.createWheel(["Cork Taint", "Sulfides \n and \n Mercaptans", "Brettanomyces", "Madeirized \n or \n Cooked", "Volatile \n Acidity"]);
 
     // hide sub circle
     for(let x = 0; x < wheelArr.length; x++) { 
@@ -77,7 +83,7 @@ class SmellForm extends React.Component {
 
       return (
           <div>
-          <div id="divWheelOne" className='wheel-container'>
+          <div id="divWheel-00" className='wheel-container'>
           </div>
           </div>
       )
