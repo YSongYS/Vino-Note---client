@@ -8,17 +8,36 @@ import { Divider, Grid, Image, Container, Button, Form, Segment } from 'semantic
 class SmellForm extends React.Component {
 
   componentDidMount() {
-    // console.log(window.wheelnav)
-    var myWheelnav = new window.wheelnav("divWheel");
-    const arr = ['hello','hello','hello','hello','hello']
-    myWheelnav.createWheel(arr);
+    const smellWheelOne = new window.wheelnav("divWheelOne")
+    smellWheelOne.wheelRadius = 200
+    smellWheelOne.spreaderEnable = true
+    smellWheelOne.spreaderInTitle = 'Wine\nAroma'
+    smellWheelOne.spreaderOutTitle = 'Wine\nAroma'
+    smellWheelOne.spreaderTitleFont = '100 24px Helvetica'
+    smellWheelOne.spreaderRadius = 50
+    smellWheelOne.createWheel(['Primary','Secondary','Tertiary','Flaws'])
+
+    const smellWheelTwo = new window.wheelnav("divWheelTwo")
+    smellWheelTwo.wheelRadius = 400
+    smellWheelTwo.spreaderEnable = true
+    smellWheelTwo.centerX = smellWheelOne.centerX
+    smellWheelTwo.centerY = smellWheelOne.centerY
+    smellWheelTwo.spreaderInTitle = 'Wine\nAroma'
+    smellWheelTwo.spreaderOutTitle = 'Wine\nAroma'
+    smellWheelTwo.spreaderTitleFont = '100 24px Helvetica'
+    smellWheelTwo.spreaderRadius = 200
+    smellWheelTwo.createWheel(['Primary','Secondary','Tertiary','Flaws'])
   }
 
     render() {
 
       return (
-        <div id="divWheel">
-        </div>
+          <div>
+          <div id="divWheelOne" className='wheel-container'>
+          </div>
+          <div id="divWheelTwo" className='wheel-container'>
+          </div>
+          </div>
       )
     }
 }
