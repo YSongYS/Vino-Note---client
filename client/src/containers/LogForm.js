@@ -10,7 +10,7 @@ import ConcludingNote from '../components/ConcludingNote';
 class LogForm extends React.Component {
 
     state = {
-      activeItem:'Look',
+      activeItem:'Smell',
       wineBeingLogged:undefined
     }
 
@@ -28,6 +28,11 @@ class LogForm extends React.Component {
     }
 
     addLookNote = (event, lookInfo) => {
+      event.preventDefault()
+      console.log(lookInfo)
+    }
+
+    addTasteNote = (event, lookInfo) => {
       event.preventDefault()
       console.log(lookInfo)
     }
@@ -53,7 +58,7 @@ class LogForm extends React.Component {
                     {this.state.activeItem === 'Wine'? <WineInfo addNewWine={this.addNewWine}/> : <div></div>}
                     {this.state.activeItem === 'Look'? <LookForm addLookNote={this.addLookNote}/> : <div></div>}
                     {this.state.activeItem === 'Smell'? <SmellForm addNewWine={this.addNewWine}/> : <div></div>}
-                    {this.state.activeItem === 'Taste'? <TasteForm addNewWine={this.addNewWine}/> : <div></div>}
+                    {this.state.activeItem === 'Taste'? <TasteForm addTasteNote={this.addTasteNote}/> : <div></div>}
                     {this.state.activeItem === 'Concluding note'? <ConcludingNote addNewWine={this.addNewWine}/> : <div></div>}
                   </Segment>
               </Grid.Column>
