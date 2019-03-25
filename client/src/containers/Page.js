@@ -6,7 +6,7 @@ import LogForm from './LogForm';
 class Page extends React.Component {
 
     state = {
-        minhaOrSong: false,
+        minhaOrSong: true,
         logs: []
     }
 
