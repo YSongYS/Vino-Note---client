@@ -76,6 +76,12 @@ class TasteForm extends React.Component {
             </Grid.Column>
           </Grid.Row>
         )})}
+        <Grid.Row textAlign='right'>
+
+          <Grid.Column width={16}>
+            <Button color='dark grey' onClick={(event)=>this.props.addConcludingNote(event, this.state)}>Confirm</Button>
+          </Grid.Column>
+        </Grid.Row>
         </Grid>
 
 

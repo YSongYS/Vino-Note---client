@@ -10,7 +10,7 @@ import ConcludingNote from '../components/ConcludingNote';
 class LogForm extends React.Component {
 
     state = {
-      activeItem:'Smell',
+      activeItem:'Wine',
       wineBeingLogged:undefined
     }
 
@@ -32,9 +32,19 @@ class LogForm extends React.Component {
       console.log(lookInfo)
     }
 
-    addTasteNote = (event, lookInfo) => {
+    addTasteNote = (event, tasteInfo) => {
       event.preventDefault()
-      console.log(lookInfo)
+      console.log(tasteInfo)
+    }
+
+    addSmellNote = (event, smellInfo) => {
+      event.preventDefault()
+      console.log(smellInfo)
+    }
+
+    addConcludingNote = (event, concludingInfo) => {
+      event.preventDefault()
+      console.log(concludingInfo)
     }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -54,13 +64,13 @@ class LogForm extends React.Component {
               </Grid.Column>
 
               <Grid.Column stretched width={14}>
-                  <Segment>
+                  <div>
                     {this.state.activeItem === 'Wine'? <WineInfo addNewWine={this.addNewWine}/> : <div></div>}
                     {this.state.activeItem === 'Look'? <LookForm addLookNote={this.addLookNote}/> : <div></div>}
-                    {this.state.activeItem === 'Smell'? <SmellForm addNewWine={this.addNewWine}/> : <div></div>}
+                    {this.state.activeItem === 'Smell'? <SmellForm addSmellNote={this.addSmellNote}/> : <div></div>}
                     {this.state.activeItem === 'Taste'? <TasteForm addTasteNote={this.addTasteNote}/> : <div></div>}
-                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addNewWine={this.addNewWine}/> : <div></div>}
-                  </Segment>
+                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote}/> : <div></div>}
+                  </div>
               </Grid.Column>
           </Grid>
         )

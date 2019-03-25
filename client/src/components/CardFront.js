@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Flag } from 'semantic-ui-react'
+import { Card, Flag} from 'semantic-ui-react'
 
 export default class CardFront extends Component {
 
