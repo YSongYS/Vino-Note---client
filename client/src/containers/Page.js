@@ -1,12 +1,12 @@
 import React from 'react'
 import LogList from '../components/LogList';
-// import Stats from '../components/Stats';
+import CameraApp from '../components/CameraApp';
 import LogForm from './LogForm';
 
 class Page extends React.Component {
 
     state = {
-        minhaOrSong: true,
+        minhaOrSong: false,
         logs: []
     }
 
