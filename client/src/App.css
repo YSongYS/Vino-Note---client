@@ -171,18 +171,29 @@
 
 /* Smell form */
 .wheel-container {
-  height:500px;
-  width:500px;
+  height:550px;
+  width:550px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
 
 tspan {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   font-family: sans-serif;
+  color: white;
 }
+
+.last-wheel-selection {
+  text-align: left;
+  height: auto;
+  width: 400px;
+  padding: 40px;
+  border: 0.5px solid grey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
 
 /* CalendarLog */
 .react-calendar-heatmap .color-scale-1 { fill: #5cca3b; }
