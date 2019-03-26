@@ -9,6 +9,7 @@ class Stats extends React.Component {
   // </Header>
     render() {
         return (
+
             <Grid>
                 <Grid.Row columns={2}>
                 <Grid.Column width={1}>
@@ -53,6 +54,7 @@ class Stats extends React.Component {
 
 
             </Grid>
+
 
         )
     }

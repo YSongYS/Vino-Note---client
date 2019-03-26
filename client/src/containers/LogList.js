@@ -60,6 +60,7 @@ class LogList extends React.Component {
     render() {
         return (
             <div className='card-list'>
+
                 {this.state.displayDownButton?
                 <Button className='dashboard-Down' color='olive' onClick={this.handleScrollToStats} size='small' >
                   <Icon name='angle double down'/>See Stats
@@ -72,6 +73,7 @@ class LogList extends React.Component {
                 </Button>
                 :null
                 }
+
                 <Card.Group>
                     <LogCard />
                     <LogCard />
@@ -89,6 +91,7 @@ class LogList extends React.Component {
                     <LogCard />
                     <LogCard />
                 </Card.Group>
+
                 <br/><br/><br/><br/>
                 <div ref={this.statsRef}>
                 <Divider horizontal> Statistics </Divider>
@@ -96,6 +99,7 @@ class LogList extends React.Component {
                 <br/><br/>
                 <Stats />
                 <br/><br/><br/><br/>
+
             </div>
         )
     }

@@ -10,7 +10,7 @@ import ConcludingNote from '../components/ConcludingNote';
 class LogForm extends React.Component {
 
     state = {
-      activeItem:'Taste',
+      activeItem:'Wine',
       wineBeingLogged:undefined
     }
 

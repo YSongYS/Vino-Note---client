@@ -6,6 +6,7 @@ class Setting extends React.Component {
 
         return (
             <div>
+                
             </div>
         )
     }
