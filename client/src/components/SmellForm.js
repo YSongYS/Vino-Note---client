@@ -85,6 +85,7 @@ class SmellForm extends React.Component {
         if (selected) {
           for (let j=0; j < wheelArr[i].navItems.length; j++) {
             deleteAllSelections();
+            handleFirstSelect(mainWheel.navItems[i].initNavTitle.title)
             wheelArr[i].navItems[j].navItem.hide();
             wheelArr[i].navItems[j].navItem.show();
 
@@ -98,6 +99,7 @@ class SmellForm extends React.Component {
           }
           for (let j=0; j < wheelArr[i].navItems.length; j++) {
             toggleSelection.style.display = 'block'
+            handleFirstSelect(mainWheel.navItems[i].initNavTitle.title)
             wheelArr[i].navItems[j].navItem.show();
           }
         }
