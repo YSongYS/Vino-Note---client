@@ -10,7 +10,7 @@ import LogList from './containers/LogList';
 class App extends React.Component {
 
   state = {
-    loggedIn:true
+    loggedIn:false
   }
 
   render() {

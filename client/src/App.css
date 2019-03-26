@@ -1,17 +1,24 @@
 /* Home container */
 
 .home-container{
+  position: absolute;
+  top: 0;
   height: 100vh;
+  width: 100vw;
   background-image: url("/landing_background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -99;
 }
 
 .header-back{
-  top:0;
-  height: 20vh;
-  background:rgba(0,0,0,0.5)
+  height: 75%;
+  width: 40%;
+  margin-top: 7%;
+  background:rgba(0,0,0,0.5);
+  justify-content: center;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 /* Header */
@@ -249,7 +256,19 @@ tspan {
 
 /* Log in Form */
 .login-form {
-  width:30%;
+  width:60%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-form-label {
+  text-align: left;
+}
+
+.signup-form {
+  width:60%;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
 }
