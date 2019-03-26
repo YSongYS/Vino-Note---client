@@ -1,47 +1,39 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Icon } from 'semantic-ui-react'
 import Header from '../components/Header'
-class Nav extends React.Component {
-    state = { activeItem: 'list' }
+import { NavLink, Link } from 'react-router-dom';
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+
+class Nav extends React.Component {
 
     render() {
-        const { activeItem } = this.state
-
         return (
             <div>
                 <Header />
                 <Menu pointing secondary>
-                    <Menu.Item name='create log' active={activeItem === 'create log'} onClick={this.handleItemClick} />
-                    <Menu.Item
-                    name='list'
-                    active={activeItem === 'list'}
-                    onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                    name='stats'
-                    active={activeItem === 'stats'}
-                    onClick={this.handleItemClick}
-                    />
-                    <Menu.Item
-                    name='setting'
-                    active={activeItem === 'setting'}
-                    onClick={this.handleItemClick}
-                    />
-                    <Menu.Menu position='right'>
-                        <Menu.Item
-                            name='logout'
-                            active={activeItem === 'logout'}
-                            onClick={this.handleItemClick}
-                        />
-                    </Menu.Menu>
+                    <Menu.Item as={ Link } name='dash' to='/dash'>
+                      <Icon name='list alternate outline'/>
+                      Dashboard
+                    </Menu.Item>
+                    <Menu.Item as={ Link } name='create' to='/create'>
+                      <Icon name='add'/>
+                      Create new
+                    </Menu.Item>
+                    <Menu.Item as={ Link } name='setting' to='/setting'>
+                      <Icon name='setting'/>
+                      Settings
+                    </Menu.Item>
+                <Menu.Menu position='right'>
+                    <Menu.Item as={ Link } name='log out' to='/'>
+                      Log out
+                    </Menu.Item>
+                </Menu.Menu>
                 </Menu>
-
             </div>
-
         )
     }
+
 }
 
 export default Nav

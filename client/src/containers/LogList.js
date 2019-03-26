@@ -1,6 +1,6 @@
 import React from 'react'
-import LogCard from './LogCard';
-import Stats from './Stats';
+import LogCard from '../components/LogCard';
+import Stats from '../components/Stats';
 import { Card } from 'semantic-ui-react'
 
 
@@ -9,7 +9,7 @@ class LogList extends React.Component {
         return (
             <div className='card-list'>
                 <Card.Group>
-                
+
                     <LogCard />
                     <LogCard />
                     <LogCard />
@@ -25,7 +25,7 @@ class LogList extends React.Component {
                     <LogCard />
                     <LogCard />
                     <LogCard />
-            
+
                 </Card.Group>
 
                 <Stats />
