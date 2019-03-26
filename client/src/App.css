@@ -1,17 +1,35 @@
+/* Home container */
+
+.home-container{
+  height: 100vh;
+  background-image: url("/landing_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -99;
+}
+
+.header-back{
+  top:0;
+  height: 20vh;
+  background:rgba(0,0,0,0.5)
+}
+
 /* Header */
 .main-header {
   height: auto;
-  background-color: 'white';
-  /* background-image: url('/Logo.png');
-  background-position: center;
-  background-repeat: no-repeat; */
-  opacity: 1;
   text-align: center;
+}
+
+.header-back .header-name {
+  font-family: 'Paytone One', sans-serif;
+  font-size: 90px;
+  color:white;
 }
 
 .header-name {
   font-family: 'Paytone One', sans-serif;
   font-size: 90px;
+  color:black;
 }
 
 .header-slogan {
@@ -41,13 +59,38 @@
   margin-right:auto;
 }
 
+.dashboard-Down {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+.dashboard-Up {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+
 /* LogCard */
 
 /* CardFront */
 .card-front {
   margin: 20px;
-  height: 400px;
-  width: 290px;
+  height: 350px;
+  width: 270px;
 }
 
 .card-front:hover {
@@ -69,8 +112,8 @@
 /* CardBack */
 .card-back {
   margin: 20px;
-  height: 400px;
-  width: 290px;
+  height: 350px;
+  width: 270x;
   display: inline-flex;
   text-align: center;
 
@@ -115,6 +158,7 @@
   float: left;
   padding-right: 20px;
 }
+
 
 
 /* Log form */
@@ -201,4 +245,18 @@ tspan {
 .react-calendar-heatmap .color-scale-3 { fill: #88294d; }
 .react-calendar-heatmap .color-scale-4 { fill: #8d0422; }
 
+
 /* Camera */
+
+/* Nav */
+.navFont {
+  font-size: 15px;
+  font-weight:normal;
+}
+
+/* Log in Form */
+.login-form {
+  width:30%;
+  margin-left: auto;
+  margin-right: auto;
+}

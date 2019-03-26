@@ -1,55 +1,58 @@
 import React from 'react'
-import { Icon, Header, Statistic, Segment, Grid } from 'semantic-ui-react'
+import { Icon, Header, Statistic, Segment, Grid, Flag } from 'semantic-ui-react'
 import CalendarLog from './CalendarLog';
 
 class Stats extends React.Component {
+  // <Header as='h2'>
+  //     <Icon name='chart bar' />
+  //     <Header.Content>DashBoard</Header.Content>
+  // </Header>
     render() {
         return (
-            <Segment>
-                <Header as='h2'>
-                    <Icon name='chart bar' />
-                    <Header.Content>DashBoard</Header.Content>
-                </Header>
-                <Grid columns={5} padded='vertically' stackable>
-                    <Grid.Column width={8}>
-                        <CalendarLog />
-                    </Grid.Column>
+            <Grid>
+                <Grid.Row columns={2}>
+                <Grid.Column width={1}>
+                </Grid.Column>
+                <Grid.Column width={14}>
+                  <CalendarLog />
+                </Grid.Column>
+                </Grid.Row>
 
-                    <Grid.Column width={8} >
-                        <Statistic.Group widths='three'>
-                        <Statistic>
-                        <Statistic.Value><i className="fas fa-wine-glass-alt"></i>120</Statistic.Value>
-                        <Statistic.Label>Wine Logs</Statistic.Label>
-                        </Statistic>
+                <Grid.Row columns={4}>
+                  <Grid.Column width={5}>
+                      <br/>
+                      <Statistic size='huge'>
+                        <Statistic.Value>79</Statistic.Value>
+                        <Statistic.Label><h1>Wine Logs</h1></Statistic.Label>
+                      </Statistic>
+                      <br/><br/><br/><br/>
+                  </Grid.Column>
 
-                        <Statistic>
-                        <Statistic.Value text>
-                            france <br/>
-                            spain  <br/>
-                            italy  <br/>
-                        </Statistic.Value>
-                        <Statistic.Label>Top 3 Countries</Statistic.Label>
-                        </Statistic>
+                  <Grid.Column width={5}>
+                      <br/>
+                      <Statistic size='huge'>
+                        <Statistic.Value>Italy</Statistic.Value>
+                        <Statistic.Label><h1>Favorite Wine Origins</h1></Statistic.Label>
+                      </Statistic>
+                      <br/><br/><br/><br/>
+                  </Grid.Column>
 
-                        <Statistic>
-                        <Statistic.Value text>
-                            no1 <br/>
-                            no2  <br/>
-                            no3  <br/>
-                        </Statistic.Value>
-                        <Statistic.Label>Top 3 variety</Statistic.Label>
-                        </Statistic>
+                  <Grid.Column width={5}>
+                      <br/>
+                      <Statistic size='huge'>
+                        <Statistic.Value>Chianti</Statistic.Value>
+                        <Statistic.Label><h1>Favorate Grape Varieties</h1></Statistic.Label>
+                      </Statistic>
+                      <br/><br/><br/><br/>
+                  </Grid.Column>
 
-                        {/* <Statistic>
-                        <Statistic.Value>
+                  <Grid.Column width={1}>
+                  </Grid.Column>
+                </Grid.Row>
 
-                        </Statistic.Value>
-                        <Statistic.Label>Favorite Region</Statistic.Label>
-                        </Statistic> */}
-                        </Statistic.Group>
-                    </Grid.Column>
-                </Grid>
-            </Segment>
+
+
+            </Grid>
 
         )
     }
