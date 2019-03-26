@@ -7,7 +7,7 @@ class Stats extends React.Component {
         return (
             <Segment>
                 <Header as='h2'>
-                    <Icon name='chart bar' />
+                    <Icon name='dashboard' />
                     <Header.Content>DashBoard</Header.Content>
                 </Header>
                 <Grid columns={5} padded='vertically' stackable>

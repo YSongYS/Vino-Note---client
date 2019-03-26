@@ -8,6 +8,8 @@ class LogList extends React.Component {
     render() {
         return (
             <div className='card-list'>
+                 <Stats />
+
                 <Card.Group>
 
                     <LogCard />
@@ -28,7 +30,6 @@ class LogList extends React.Component {
 
                 </Card.Group>
 
-                <Stats />
             </div>
         )
     }

@@ -108,5 +108,57 @@ const category_explained = {
   }
 }
 
+const second_smells = {
+  "primary": ["Flower", "Citrus", "Tree Fruit", "Tropical Fruit", "Red Fruit", "Black Fruit", "Dried Fruit", "Noble Rot", "Spice", "Vegetable", "Earth"],
+  "secondary": ["Microbial"],
+  "tertiary": ["Oak Aging", "General Aging"],
+  "flaw": ["Cork Taint", "Sulfides and Mercaptans", "Brettanomyces", "Madeirized or Cooked", "Volatile Acidity"]
+}
 
-export {options_Country, options_Variety, options_Price, white_colors, red_colors, rose_colors, category_explained};
+
+
+const third_smells = {
+  "Flower": ["Iris", "Peony", "Elderflower", "Acacia", "Lilac", "Jasmine", "Honeysuckle", "Violet", "Lavender", "Rose", "Potpourri", "Hibiscus"],
+  "Citrus": ["Lime", "Lemon", "Grapefruit", "Orange", "Marmalade"],
+  "Tree Fruit": ["Quince", "Apple", "Pear", "Nectarine", "Peach", "Apricot", "Persimmon"],
+  "Tropical Fruit": ["Pineapple", "Mango", "Guava", "Passion Fruit", "Lychee", "Bubblegum"],
+  "Red Fruit": ["Cranberry", "Red Plum", "Pomegranate", "Sour Cherry", "Strawberry", "Cherry", "Raspberry"],
+  "Black Fruit": ["Boysenberry", "Black Currant", "Black Cherry", "Plum", "Blackberry", "Blueberry", "Olive"],
+  "Dried Fruit": ["Raisin", "Fig", "Date", "Fruitcake"],
+  "Noble Rot": ["Beeswax", "Ginger", "Honey"],
+  "Spice": ["White Pepper", "Red Pepper", "Black Pepper", "Cinnamon", "Anise", "5-Spice", "Fennel", "Eucalyptus", "Mint", "Thyme"],
+  "Vegetable": ["Grass", "Tomato Leaf", "Gooseberry", "Bell Pepper", "Jalapeño", "Bitter Almond", "Tomato", "Sun-Dried Tomato", "Black Tea"],
+  "Earth": ["Clay Pot", "Slate", "Wet Gravel", "Potting Soil", "Red Beet", "Volcanic Rocks", "Petroleum"],
+  "Microbial": ["Butter", "Cream", "Sourdough", "Lager", "Truffle", "Mushroom"],
+  "Oak Aging": ["Vanilla", "Coconut", "Baking Spices", "Cigar Box", "Smoke", "Dill"],
+  "General Aging": ["Dried Fruit", "Nutty Flavors", "Tobacco", "Coffee", "Cocoa", "Leather"],
+  "Cork Taint": ["Musty Cardboard", "Wet Dog"],
+  "Sulfides and Mercaptans": ["Cured Meat", "Boiled Eggs", "Burnt Rubber", "Lit Match", "Garlic", "Onion", "Cat Pee"],
+  "Brettanomyces": ["Black Cardamon", "Band-Aid", "Sweaty Leather Saddle", "Horse Manure"],
+  "Madeirized or Cooked": ["Toffee", "Stewed Fruit"],
+  "Volatile Acidity": ["Vinegar", "Nail Polish Remover"]
+}
+
+const color_scheme = {
+  'mainWheel': ["#92BBB0", "#722143", "#351A2D", "#B73A45"],
+  'primary': ["#d3e3df", "#a7c8bf"],
+  'secondary': ["#c6a6b3", "#8e4d68"],
+  'tertiary': ["#aea3ab", "#5d4756"],
+  'flaw': ["#e2b0b4", "#c5616a"]
+}
+
+
+
+
+export {
+  options_Country, 
+  options_Variety, 
+  options_Price, 
+  white_colors, 
+  red_colors, 
+  rose_colors, 
+  category_explained, 
+  second_smells, 
+  third_smells, 
+  color_scheme
+};
