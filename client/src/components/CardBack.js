@@ -16,31 +16,31 @@ export default class CardBack extends Component {
 
     render() {
         return (
-            <div 
-                className="card-back" 
+            <div
+                className="card-back"
                 onClick={this.props.handleClick}
                 >
                 <Card color='red' className="card-back">
                 <Card.Content extra className='name-back'>
-                    Rioja Reserva 2014 Muga 
+                    {this.props.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}
                 </Card.Content>
                 <Card.Content className='rating-back'>
                     <h1>Rating</h1>
                     <br />
-                    <Rating maxRating={5} defaultRating={3} icon='star' size='massive' />
+                    <Rating maxRating={5} rating={this.props.logInfo.rating} icon='star' size='massive' />
 
                 </Card.Content>
                 <Card.Content className='review-back'>
                     <h1>Comment</h1>
                     <br />
-                    This is the best wine I've ever tried!
+                    {this.props.logInfo.concluding_note}
                 </Card.Content>
                 <Card.Content extra>
                         <Button basic fluid color='black' onClick={this.handleClick}>Detail</Button>
                 </Card.Content>
                 </Card>
 
-                {this.state.detailClicked ? <LogDetail /> : null}
+                {this.state.detailClicked ? <LogDetail wineInfo={this.props.wineInfo} logInfo={this.props.logInfo}/> : null}
             </div>
         )
     }

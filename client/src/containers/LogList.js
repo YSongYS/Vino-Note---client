@@ -9,13 +9,22 @@ class LogList extends React.Component {
     state = {
       scrollPosition:0,
       displayDownButton: false,
-      displayUpButton: false
+      displayUpButton: false,
+      all_logs: []
     }
-
 
     constructor(props){
       super(props)
       this.statsRef = React.createRef()
+    }
+
+    getAllLogs = (userId) => {
+      const url = `http://localhost:3000/users/${userId}/logs`
+      return fetch(url)
+        .then(res => res.json())
+        .then(all_logs => this.setState({
+          all_logs: [...all_logs]
+        }))
     }
 
     handleScrollToStats = () => {
@@ -55,6 +64,7 @@ class LogList extends React.Component {
 
     componentDidMount(){
       window.addEventListener('scroll', this.handleScroll)
+      this.getAllLogs(3)
     }
 
     render() {
@@ -75,21 +85,7 @@ class LogList extends React.Component {
                 }
 
                 <Card.Group>
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
-                    <LogCard />
+                {this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}}/>)}
                 </Card.Group>
 
                 <br/><br/><br/><br/>
