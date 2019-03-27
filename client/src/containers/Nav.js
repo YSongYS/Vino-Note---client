@@ -2,6 +2,7 @@ import React from 'react'
 import { Menu, Icon, Dropdown } from 'semantic-ui-react'
 import Header from '../components/Header'
 import { NavLink, Link } from 'react-router-dom';
+import { third_smells } from '../Library_terms';
 
 
 
@@ -21,6 +22,11 @@ class Nav extends React.Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+    handleLogOutClick = () => {
+      this.props.logOut()
+      this.props.toggleLoginState()
+    }
+
     render() {
         return (
             <div>
@@ -36,7 +42,7 @@ class Nav extends React.Component {
                       <p className='navFont'>Settings </p>
                     </Menu.Item>
                 <Menu.Menu position='right'>
-                    <Menu.Item as={ Link } name='log out' to='/'>
+                    <Menu.Item as={ Link } name='log out' to='/' onClick={this.handleLogOutClick}>
                       <p className='navFont'>Log Out</p>
                     </Menu.Item>
                 </Menu.Menu>

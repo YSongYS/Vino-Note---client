@@ -74,7 +74,7 @@ class SmellTable extends React.Component {
                 </Table.Row>
             </Table.Body>
             </Table>
-            <Button fluid color='brown' onClick={this.handleClick}>Submit</Button>
+            <Button fluid color='brown' onClick={this.handleClick}>Confirm</Button>
         </div>
       )
     }

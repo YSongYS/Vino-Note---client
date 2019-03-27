@@ -20,10 +20,15 @@ class LogList extends React.Component {
 
     getAllLogs = (userId) => {
       const url = `http://localhost:3000/users/${userId}/logs`
-      return fetch(url)
+      return fetch(url,{
+        method:'GET',
+        headers: {
+          Authorization: localStorage.getItem("token")
+        }
+      })
         .then(res => res.json())
         .then(all_logs => this.setState({
-          all_logs: [...all_logs]
+          all_logs: all_logs
         }))
     }
 
@@ -64,7 +69,7 @@ class LogList extends React.Component {
 
     componentDidMount(){
       window.addEventListener('scroll', this.handleScroll)
-      this.getAllLogs(3)
+      this.getAllLogs(this.props.user_id)
     }
 
     render() {

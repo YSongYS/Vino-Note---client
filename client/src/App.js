@@ -10,22 +10,49 @@ import LogList from './containers/LogList';
 class App extends React.Component {
 
   state = {
-    loggedIn:true
+    user_id: undefined,
+    loggedIn: false
+  }
+
+  toggleLoginState = () => {
+    if(window.localStorage.token) {
+      this.setState({user_id: window.localStorage.user_id, loggedIn: true})
+    } else {
+      this.setState({user_id: undefined, loggedIn: false})
+    }
+  }
+
+  handleLogOut = () => {
+    window.localStorage.clear()
+  }
+
+  componentDidMount() {
+    this.toggleLoginState()
   }
 
   render() {
     return (
         <Router>
-          {this.state.loggedIn?
+          {this.state.loggedIn ?
             <React.Fragment>
-            <Nav />
+            <Nav logOut={this.handleLogOut} toggleLoginState={this.toggleLoginState}/>
             <div className='page-container'>
-            <Route exact path="/dash" component={LogList}/>
-            <Route exact path="/create" component={LogForm}/>
-            <Route exact path="/setting" component={Setting}/>
+            <Route
+              exact path="/dash"
+              render={(routeProps) => <LogList user_id={this.state.user_id}/>}
+            />
+            <Route
+              exact path="/create"
+              render={(routeProps) => <LogForm user_id={this.state.user_id}/>}
+            />
+            <Route
+              exact path="/setting"
+              render={(routeProps) => <Setting user_id={this.state.user_id}/>}
+            />
             </div>
             </React.Fragment>
-            :<Route exact path="/" component={Home}/>
+            :
+            <Route exact path="/" render={(routeProps) => <Home toggleLoginState={this.toggleLoginState}/>} />
           }
         </Router>
     );

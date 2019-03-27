@@ -245,9 +245,6 @@ tspan {
 .react-calendar-heatmap .color-scale-3 { fill: #88294d; }
 .react-calendar-heatmap .color-scale-4 { fill: #8d0422; }
 
-
-/* Camera */
-
 /* Nav */
 .navFont {
   font-size: 15px;
@@ -274,7 +271,7 @@ tspan {
 }
 
 /* setting */
-.user-setting {
+.edit-form {
   display: block;
   width: 500px;
   height: auto;
@@ -295,4 +292,9 @@ tspan {
 
 .recommendation-setting .title-setting {
   color: #B73A45;
+}
+
+/* rating */
+.ui .rating :focus {
+  outline: none;
 }
