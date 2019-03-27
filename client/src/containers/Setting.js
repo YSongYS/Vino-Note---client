@@ -1,11 +1,13 @@
 import React from 'react'
+import API from '../API'
 import { Button, Form } from 'semantic-ui-react'
 
 class Setting extends React.Component {
     state = {
-        email: '123@123.com',
-        password: 123,
-        nickname: 'Mr.123'
+        email: undefined,
+        password: undefined,
+        password_confirmation: undefined,
+        nickname: undefined
     }
 
     sendMail = () => {
@@ -16,14 +18,35 @@ class Setting extends React.Component {
              
         window.location.href = link;
     }
+
+    handleChange = (event) => {
+        this.setState({
+          [event.target.name]: event.target.value
+        })
+      }
+
+    componentDidMount() {
+        API.getUserInfo()
+        .then(data => {
+            this.setState({email: data.user.email, nickname: data.user.nickname})
+        })
+    }
+
     render() {
+        const userData = {
+            id: localStorage.user_id,
+            email: this.state.email,
+            password: this.state.password,
+            password_confirmation: this.state.password_confirmation,
+            nickname: this.state.nickname
+        }
 
         return (
             <div className='user-setting'>
                 <div className='edit-form'>
                     <h1>Edit Your Info</h1>
 
-                    <Form onSubmit={this.props.signupSubmit}>
+                    <Form onSubmit={(event) => API.userUpdate(event, userData)}>
                         <Form.Field>
                             <label className='login-form-label' >Email</label>
                             <input 
