@@ -2,40 +2,32 @@ import React from 'react'
 import Header from '../components/Header'
 import LoginForm from '../components/LoginForm'
 import SignUpForm from '../components/SignUpForm'
-import { Button } from 'semantic-ui-react'
 
 class Home extends React.Component {
 
   state = {
-    signup:true
+    signup: false
   }
 
-  switchToSignIn = () => {
-    this.setState({
-      signup:true
-    })
-  }
-
-  switchToLogIn = () => {
-    this.setState({
-      signup:false
-    })
-  }
-
-  signupSubmit = () => {
-    console.log('sign me up')
-  }
-
-  loginSubmit = () => {
-    console.log('log me in')
-  }
+  switchToSignIn = () => { this.setState({ signup: true }) }
+  switchToLogIn = () => { this.setState({ signup: false }) }
 
   render() {
       return (
             <div className='home-container'>
               <div className='header-back'>
                 <Header />
-                {this.state.signup?<SignUpForm switchToLogIn={this.switchToLogIn} signupSubmit={this.signupSubmit}/>:<LoginForm switchToSignIn={this.switchToSignIn} loginSubmit={this.loginSubmit}/>}
+                {
+                  this.state.signup ? 
+                  <SignUpForm 
+                    switchToLogIn={this.switchToLogIn} 
+                    toggleLoginState={this.props.toggleLoginState}
+                  /> :
+                  <LoginForm 
+                    switchToSignIn={this.switchToSignIn} 
+                    toggleLoginState={this.props.toggleLoginState}
+                  />
+                }
               </div>
             </div>
       )

@@ -9,7 +9,8 @@ class LogList extends React.Component {
     state = {
       scrollPosition:0,
       displayDownButton: false,
-      displayUpButton: false
+      displayUpButton: false,
+      wine: []
     }
 
 

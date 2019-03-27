@@ -27,7 +27,7 @@ export default class CardBack extends Component {
                 <Card.Content className='rating-back'>
                     <h1>Rating</h1>
                     <br />
-                    <Rating maxRating={5} defaultRating={3} icon='star' size='massive' />
+                    <Rating maxRating={5} defaultRating={3} icon='star' size='massive' disabled />
 
                 </Card.Content>
                 <Card.Content className='review-back'>
