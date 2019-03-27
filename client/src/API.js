@@ -44,7 +44,29 @@ const loginSubmit = (event, data) => {
   })
 }
 
+const getAllLogs = (userId) => {
+  const url_used = `${url}/users/${userId}/logs`
+  return fetch(url_used,{
+    method:'GET',
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(res => res.json())}
+
+const simpleShowFetch = (model, modelId) => {
+  const url_used = `${url}/${model}s/${modelId}`
+  return fetch(url_used,{
+    method:'GET',
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+    .then(res => res.json())}
+
 export default {
   signupSubmit,
-  loginSubmit
+  loginSubmit,
+  getAllLogs,
+  simpleShowFetch
 }

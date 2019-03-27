@@ -1,6 +1,7 @@
 import React from 'react'
 import LogCard from '../components/LogCard';
 import Stats from '../components/Stats';
+import API from '../API';
 import { Card, Divider, Button, Icon } from 'semantic-ui-react'
 
 
@@ -16,20 +17,6 @@ class LogList extends React.Component {
     constructor(props){
       super(props)
       this.statsRef = React.createRef()
-    }
-
-    getAllLogs = (userId) => {
-      const url = `http://localhost:3000/users/${userId}/logs`
-      return fetch(url,{
-        method:'GET',
-        headers: {
-          Authorization: localStorage.getItem("token")
-        }
-      })
-        .then(res => res.json())
-        .then(all_logs => this.setState({
-          all_logs: all_logs
-        }))
     }
 
     handleScrollToStats = () => {
@@ -69,7 +56,10 @@ class LogList extends React.Component {
 
     componentDidMount(){
       window.addEventListener('scroll', this.handleScroll)
-      this.getAllLogs(this.props.user_id)
+      API.getAllLogs(this.props.user_id)
+          .then(all_logs => this.setState({
+            all_logs: all_logs
+          }))
     }
 
     render() {

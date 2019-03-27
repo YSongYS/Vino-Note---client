@@ -1,6 +1,7 @@
 import React from 'react'
 import CardFront from './CardFront';
 import CardBack from './CardBack';
+import API from '../API';
 
 class LogCard extends React.Component {
     state = {
@@ -14,16 +15,10 @@ class LogCard extends React.Component {
     }
 
     componentDidMount(){
-      this.getWineInfo(this.props.logInfo.wine_id)
-    }
-
-    getWineInfo = (wineId) => {
-      const url = `http://localhost:3000/wines/${wineId}`
-      return fetch(url)
-        .then(res => res.json())
+      API.simpleShowFetch("wine",this.props.logInfo.wine_id)
         .then(wineInfo => this.setState({
           wineInfo: {...wineInfo}
-        }))
+      }))
     }
 
     render() {

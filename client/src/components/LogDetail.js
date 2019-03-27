@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import API from '../API';
+import { white_colors, red_colors, rose_colors } from '../Library_terms'
 import { Header, Image, Modal, Button, Icon, Rating, Divider } from 'semantic-ui-react'
 
 class LogDetail extends React.Component {
@@ -20,9 +22,7 @@ class LogDetail extends React.Component {
     }
 
     getInfo = (model, modelId) => {
-      const url = `http://localhost:3000/${model}s/${modelId}`
-      return fetch(url)
-        .then(res => res.json())
+      API.simpleShowFetch(model, modelId)
         .then(modelInfo => this.setState({
           [`${model}Info`]: {...modelInfo}
         }))
@@ -49,15 +49,13 @@ class LogDetail extends React.Component {
                     <Modal.Content image>
                         <Image wrapped size='medium' src={this.props.wineInfo.image} />
                         <Modal.Description>
-                            <Header>Wine Info</Header>
-                            <p>{this.props.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</p>
+                            <Header>{this.props.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</Header>
                             <p>{this.props.wineInfo.vintage}, {this.props.wineInfo.country}</p>
                             <p>{"$".repeat(this.props.wineInfo.price_range)}</p>
                             <p><Rating maxRating={5} rating={this.props.logInfo.rating} icon='star' size='large' /></p>
-
                             <Header>Look</Header>
                             {this.state.lookInfo && <div>
-                              <p>{this.state.lookInfo.color}</p>
+                              <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]+rose_colors[this.state.lookInfo.color]+red_colors[this.state.lookInfo.color]).split('undefined').join('')}</p>
                               <p>Clarity <Rating rating={this.state.lookInfo.clarity} maxRating={5} size='mini' disabled/></p>
                               <p>Viscosity <Rating rating={this.state.lookInfo.viscosity} maxRating={5} size='mini' disabled/></p>
                             </div>}
