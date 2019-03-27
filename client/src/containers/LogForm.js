@@ -5,36 +5,39 @@ import LookForm from '../components/LookForm';
 import SmellForm from '../components/SmellForm';
 import TasteForm from '../components/TasteForm';
 import ConcludingNote from '../components/ConcludingNote';
+import API from '../API';
 
 
 class LogForm extends React.Component {
 
     state = {
       activeItem:'Wine',
-      wineBeingLogged:undefined
+      wine_id:undefined
     }
 
     addNewWine = (event, wineInfo) => {
       event.preventDefault()
-      const options = {
-          method: "POST",
-          headers: {"Content-Type": "application/json", Accept: "application/json"},
-          body: JSON.stringify(wineInfo)
-        }
-      const url = "http://localhost:3000/wines"
-      return fetch(url, options)
-        .then(res => res.json())
-        .then(wine => this.setState({wineBeingLogged:wine.id}))
+      API.createWine(wineInfo)
+        .then(wine => this.setState({
+          wine_id:wine.id,
+          activeItem:'Look'
+        }))
     }
 
     addLookNote = (event, lookInfo) => {
-      event.preventDefault()
-      console.log(lookInfo)
+      API.findLook(lookInfo)
+        .then(look => this.setState({
+          looks_id:look.id,
+          activeItem:'Smell'
+        }))
     }
 
     addTasteNote = (event, tasteInfo) => {
-      event.preventDefault()
-      console.log(tasteInfo)
+      API.findTaste(tasteInfo)
+        .then(taste => this.setState({
+          taste_id:taste.id,
+          activeItem:'Concluding note'
+        }))
     }
 
     addSmellNote = (event, smellInfo) => {
@@ -49,17 +52,18 @@ class LogForm extends React.Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-
+      // !!this.state.wine_id reinsert back to the render of react fragment
     render() {
         return (
           <Grid>
               <Grid.Column width={2}>
                   <Menu fluid vertical tabular>
                     <Menu.Item name='Wine' active={this.state.activeItem === 'Wine'} onClick={this.handleItemClick} />
-                    <Menu.Item name='Look' active={this.state.activeItem === 'Look'} onClick={this.handleItemClick} />
+                    {true? <React.Fragment><Menu.Item name='Look' active={this.state.activeItem === 'Look'} onClick={this.handleItemClick} />
                     <Menu.Item name='Smell' active={this.state.activeItem === 'Smell'} onClick={this.handleItemClick} />
                     <Menu.Item name='Taste' active={this.state.activeItem === 'Taste'} onClick={this.handleItemClick} />
                     <Menu.Item name='Concluding note' active={this.state.activeItem === 'Concluding note'} onClick={this.handleItemClick} />
+                    </React.Fragment> : null}
                   </Menu>
               </Grid.Column>
 

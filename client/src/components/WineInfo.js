@@ -9,7 +9,7 @@ class WineInfo extends React.Component {
 
     state = {
       name:"",
-      vinatge:"",
+      vintage:"",
       variety:"",
       winery:"",
       region:"",
@@ -56,14 +56,14 @@ class WineInfo extends React.Component {
                     <Form.Input width={5} label="Vintage" name="vintage" placeholder='Vintage' value={this.state.vintage} onChange={this.handleSelectChange}/>
                     <Form.Select width={11} label="Price range" name="price_range" options={options_Price} placeholder='price' value={this.state['price_range']} onChange={this.handleSelectChange}/>
                   </Form.Group>
-                  <Form.Dropdown label="Grape" name="variety" options={options_Variety} placeholder='Grape' value={this.state.variety} onChange={this.handleSelectChange} labeled fluid multiple search selection/>
-                  <Form.Dropdown label="Country" name="country" options={options_Country} placeholder='Country' value={this.state.country} onChange={this.handleSelectChange} labeled fluid multiple search selection/>
+                  <Form.Dropdown label="Grape" name="variety" options={options_Variety} placeholder='Grape' value={this.state.variety} onChange={this.handleSelectChange} labeled fluid search selection/>
+                  <Form.Dropdown label="Country" name="country" options={options_Country} placeholder='Country' value={this.state.country} onChange={this.handleSelectChange} labeled fluid search selection/>
 
 
                   <Form.Input label="Region (optional)" name="region" placeholder='Region' value={this.state.region} onChange={this.handleChange}/>
                   <Form.Input label="Winery (optional)" name="winery" placeholder='Winery' value={this.state.winery} onChange={this.handleChange}/>
                   <br/>
-                  <Button color='dark grey'>Start the note</Button>
+                  <Button type='submit' color='dark grey'>Start the note</Button>
               </Form>: null}
           </Grid.Column>
         </Grid>

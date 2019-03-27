@@ -91,6 +91,37 @@ const getUserInfo = () => {
   .then(res => res.json())
 }
 
+const createWine = (wineInfo) => {
+  const options = {
+      method: "POST",
+      headers: {"Content-Type": "application/json", Accept: "application/json", Authorization: localStorage.token},
+      body: JSON.stringify(wineInfo)
+    }
+  const url_used = `${url}/wines`
+  return fetch(url_used, options)
+    .then(res => res.json())}
+
+const findLook = (lookInfo) => {
+  const options = {
+    method: "POST",
+    headers: {"Content-Type": "application/json", Accept: "application/json", Authorization: localStorage.token},
+    body: JSON.stringify(lookInfo)
+  }
+  const url_used = `${url}/looks`
+  return fetch(url_used, options)
+    .then(res => res.json())
+}
+
+const findTaste = (tasteInfo) => {
+  const options = {
+    method: "POST",
+    headers: {"Content-Type": "application/json", Accept: "application/json", Authorization: localStorage.token},
+    body: JSON.stringify(tasteInfo)
+  }
+  const url_used = `${url}/tastes`
+  return fetch(url_used, options)
+    .then(res => res.json())
+}
 
 export default {
   signupSubmit,
@@ -98,5 +129,8 @@ export default {
   getAllLogs,
   simpleShowFetch,
   userUpdate,
-  getUserInfo
+  getUserInfo,
+  createWine,
+  findLook,
+  findTaste
 }
