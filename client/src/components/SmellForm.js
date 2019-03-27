@@ -1,6 +1,6 @@
 import React from 'react';
 import SmellTable from './SmellTable'
-import { Radio, Grid, Form } from 'semantic-ui-react';
+import { Radio, Grid, Form, Button, Popup } from 'semantic-ui-react';
 import { second_smells, third_smells, color_scheme } from '../Library_terms'
 
 
@@ -10,7 +10,7 @@ class SmellForm extends React.Component {
     level2Choice: undefined,
     level3Choice: undefined,
     level3List: null,
-    
+
     primary_2: undefined,
     primary_3: undefined,
     secondary_2: undefined,
@@ -127,7 +127,6 @@ class SmellForm extends React.Component {
   }
 
 
-
   handleChange = (e, { value }) => {
     this.setState({level3Choice: value});
 
@@ -149,6 +148,16 @@ class SmellForm extends React.Component {
   }
 
     render() {
+      const smellData = {
+        primary_level_two: this.state.primary_2,
+        primary_level_three: this.state.primary_3,
+        secondary_level_two: this.state.secondary_2,
+        secondary_level_three: this.state.secondary_3,
+        tertiary_level_two: this.state.tertiary_2,
+        tertiary_level_three: this.state.tertiary_3,
+        flaw_level_two: this.state.flaw_2,
+        flaw_level_three: this.state.flaw_3
+      }
 
       return (
           <Grid >
@@ -160,28 +169,28 @@ class SmellForm extends React.Component {
               <div id='last-wheel-selection'>
                 <Form>
                   {
-                    this.state.level3List ? 
+                    this.state.level3List ?
                     <Form.Field>
                       <h1>{this.state.level2Choice}</h1>
                       Your choice: <b>{this.state.level3Choice}</b>
-                    </Form.Field> 
+                    </Form.Field>
                     :
                     null
                   }
                   {
-                    this.state.level3List ? 
-                    this.state.level3List.map((name, index) => 
+                    this.state.level3List ?
+                    this.state.level3List.map((name, index) =>
                       <Form.Field key={`field-${index}`}>
                         <Radio
                           key={index}
-                          label={name} 
-                          name='radioGroup' 
-                          value={name} 
+                          label={name}
+                          name='radioGroup'
+                          value={name}
                           checked={this.state.level3Choice === name}
                           onChange={this.handleChange}
                         />
-                        </Form.Field>) 
-                      : 
+                        </Form.Field>)
+                      :
                     null
                   }
 
@@ -191,7 +200,7 @@ class SmellForm extends React.Component {
             <Grid.Column width={6}>
               <div className='user-smell-card'>
                 <h1>Your Wine Aromas🍷</h1>
-                <SmellTable 
+                <SmellTable
                   primary_2={this.state.primary_2}
                   primary_3={this.state.primary_3}
                   secondary_2={this.state.secondary_2}
@@ -200,7 +209,17 @@ class SmellForm extends React.Component {
                   tertiary_3={this.state.tertiary_3}
                   flaw_2={this.state.flaw_2}
                   flaw_3={this.state.flaw_3}
-                  />
+                />
+
+                {
+                  Object.values(this.state).includes(undefined) ?
+                  <Popup
+                  trigger={<Button fluid color='brown'>Confirm</Button>}
+                  content="Please fill out all the smells in the smell table."
+                  basic
+                  /> :
+                  <Button fluid color='brown' onClick={(event) => this.props.addSmellNote(event,smellData)}>Confirm</Button>
+                }
               </div>
             </Grid.Column>
           </Grid>

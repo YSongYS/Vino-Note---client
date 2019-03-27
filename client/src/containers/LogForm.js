@@ -1,18 +1,21 @@
 import React from 'react'
-import { Grid, Menu, Segment } from 'semantic-ui-react';
+import API from '../API'
+import { Grid, Menu } from 'semantic-ui-react';
 import WineInfo from '../components/WineInfo';
 import LookForm from '../components/LookForm';
 import SmellForm from '../components/SmellForm';
 import TasteForm from '../components/TasteForm';
 import ConcludingNote from '../components/ConcludingNote';
-import API from '../API';
 
 
 class LogForm extends React.Component {
 
     state = {
       activeItem:'Wine',
-      wine_id:undefined
+      wine_id:undefined,
+      smell_id: undefined,
+      look_id:undefined,
+      taste_id:undefined
     }
 
     addNewWine = (event, wineInfo) => {
@@ -27,7 +30,7 @@ class LogForm extends React.Component {
     addLookNote = (event, lookInfo) => {
       API.findLook(lookInfo)
         .then(look => this.setState({
-          looks_id:look.id,
+          look_id:look.id,
           activeItem:'Smell'
         }))
     }
@@ -41,8 +44,12 @@ class LogForm extends React.Component {
     }
 
     addSmellNote = (event, smellInfo) => {
-      event.preventDefault()
-      console.log(smellInfo)
+      API.createSmell(smellInfo)
+      .then(smell => this.setState({
+        smell_id: smell.id,
+        activeItem: 'Taste'
+      }))
+
     }
 
     addConcludingNote = (event, concludingInfo) => {
