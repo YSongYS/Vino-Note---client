@@ -36,6 +36,7 @@ class App extends React.Component {
           {this.state.loggedIn ?
             <React.Fragment>
             <Nav logOut={this.handleLogOut} toggleLoginState={this.toggleLoginState}/>
+            
             <div className='page-container'>
             <Route
               exact path="/dash"
