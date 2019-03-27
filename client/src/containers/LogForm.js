@@ -1,5 +1,6 @@
 import React from 'react'
-import { Grid, Menu, Segment } from 'semantic-ui-react';
+import API from '../API'
+import { Grid, Menu } from 'semantic-ui-react';
 import WineInfo from '../components/WineInfo';
 import LookForm from '../components/LookForm';
 import SmellForm from '../components/SmellForm';
@@ -11,7 +12,8 @@ class LogForm extends React.Component {
 
     state = {
       activeItem:'Wine',
-      wineBeingLogged:undefined
+      wineBeingLogged:undefined,
+      smell_id: undefined
     }
 
     addNewWine = (event, wineInfo) => {
@@ -38,8 +40,12 @@ class LogForm extends React.Component {
     }
 
     addSmellNote = (event, smellInfo) => {
-      event.preventDefault()
-      console.log(smellInfo)
+      API.createSmell(smellInfo)
+      .then(smell => this.setState({
+        smell_id: smell.id, 
+        activeItem: 'Taste'
+      }))
+      
     }
 
     addConcludingNote = (event, concludingInfo) => {

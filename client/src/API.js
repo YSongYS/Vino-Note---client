@@ -91,6 +91,21 @@ const getUserInfo = () => {
   .then(res => res.json())
 }
 
+const createSmell = (smellInfo) => {
+  // console.log(data)
+  const options = { 
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify(smellInfo)
+  }
+  return fetch(`${url}/smells`, options)
+  .then(res => res.json())
+  .then(() => alert('Confirmed!! :D'))
+}
 
 export default {
   signupSubmit,
@@ -98,5 +113,6 @@ export default {
   getAllLogs,
   simpleShowFetch,
   userUpdate,
-  getUserInfo
+  getUserInfo,
+  createSmell
 }

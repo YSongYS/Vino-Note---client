@@ -1,6 +1,6 @@
 import React from 'react';
 import SmellTable from './SmellTable'
-import { Radio, Grid, Form } from 'semantic-ui-react';
+import { Radio, Grid, Form, Button, Popup } from 'semantic-ui-react';
 import { second_smells, third_smells, color_scheme } from '../Library_terms'
 
 
@@ -127,6 +127,9 @@ class SmellForm extends React.Component {
   }
 
 
+  handleClick = (data) => {
+    this.props.addSmellNote(data)
+  } 
 
   handleChange = (e, { value }) => {
     this.setState({level3Choice: value});
@@ -149,6 +152,16 @@ class SmellForm extends React.Component {
   }
 
     render() {
+      const smellData = {
+        primary_level_two: this.state.primary_2,
+        primary_level_three: this.state.primary_3,
+        secondary_level_two: this.state.secondary_2,
+        secondary_level_three: this.state.secondary_3,
+        tertiary_level_two: this.state.tertiary_2,
+        tertiary_level_three: this.state.tertiary_3,
+        flaw_level_two: this.state.flaw_2,
+        flaw_level_three: this.state.flaw_3
+      }
 
       return (
           <Grid >
@@ -200,7 +213,17 @@ class SmellForm extends React.Component {
                   tertiary_3={this.state.tertiary_3}
                   flaw_2={this.state.flaw_2}
                   flaw_3={this.state.flaw_3}
-                  />
+                />
+
+                { 
+                  Object.values(this.state).includes(undefined) ?
+                  <Popup
+                  trigger={<Button fluid color='brown'>Confirm</Button>}
+                  content="Please fill out all the smells in the smell table."
+                  basic
+                  /> :
+                  <Button fluid color='brown' onClick={() => this.handleClick(smellData)}>Confirm</Button>
+                }
               </div>
             </Grid.Column>
           </Grid>

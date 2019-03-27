@@ -1,15 +1,7 @@
 import React from 'react'
-import { Header, Table, Button } from 'semantic-ui-react'
+import { Header, Table } from 'semantic-ui-react'
 
 class SmellTable extends React.Component {
-    
-    handleClick = () => {
-        if (Object.values(this.props).includes(undefined)) {
-            console.log("I'm not ready yet")
-        } else {
-            console.log("I'm ready to be fetched to backend")
-        }
-    }
 
     render() {
         return (
@@ -74,7 +66,6 @@ class SmellTable extends React.Component {
                 </Table.Row>
             </Table.Body>
             </Table>
-            <Button fluid color='brown' onClick={this.handleClick}>Confirm</Button>
         </div>
       )
     }
