@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Nav from './containers/Nav';
 import Home from './containers/Home';
@@ -38,6 +38,10 @@ class App extends React.Component {
             <Nav logOut={this.handleLogOut} toggleLoginState={this.toggleLoginState}/>
             
             <div className='page-container'>
+            <Route 
+              exact path="/" 
+              render={() => <Redirect to='/dash' />} 
+            />
             <Route
               exact path="/dash"
               render={(routeProps) => <LogList user_id={this.state.user_id}/>}

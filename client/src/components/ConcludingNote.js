@@ -25,11 +25,11 @@ class ConcludingNote extends React.Component {
     }
 
     componentDidMount() {
-      this.getInfo("wine", 8)
-      this.getInfo("look", 7)
-      this.getInfo("smell", 7)
-      this.getInfo("taste", 7)
-    }
+        this.getInfo("wine", this.props.wine_id)
+        this.getInfo("look", this.props.look_id)
+        this.getInfo("smell", this.props.smell_id)
+        this.getInfo("taste", this.props.taste_id)
+      }
 
     handleRatingChange = (event, {rating}) => {
       this.setState({
@@ -53,9 +53,9 @@ class ConcludingNote extends React.Component {
       return (
         <Grid textAlign='left'>
           <Grid.Column width={5}>
+          { Object.values(this.props).includes(undefined) ? 
+            null :
             <div className='final-log-info'>
-            { Object.values(this.state).includes(undefined) ? null :
-              <>
                 <Image wrapped size='medium' src={this.state.wineInfo.image} />
                 <Header>{this.state.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</Header>
                 <p>{this.state.wineInfo.vintage}, {this.state.wineInfo.country}</p>
@@ -84,9 +84,9 @@ class ConcludingNote extends React.Component {
                   <p>Alcohol <Rating rating={this.state.tasteInfo.alcohol} maxRating={5} size='mini' disabled/></p>
                   <p>Body <Rating rating={this.state.tasteInfo.body} maxRating={5} size='mini' disabled/></p>
                 </div>}
-              </>
+              </div>
             }
-            </div>
+
           </Grid.Column>
 
           <Grid.Column width={10}>

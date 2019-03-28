@@ -284,6 +284,10 @@ tspan {
 }
 
 /* setting */
+.user-setting {
+  display: block;
+}
+
 .edit-form {
   display: block;
   width: 500px;
@@ -320,4 +324,10 @@ tspan {
   margin-left: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
+}
+
+.empty-user-logs {
+  text-align: center;
+  align-content: center;
+  align-items: center;
 }

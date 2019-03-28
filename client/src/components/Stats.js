@@ -1,67 +1,80 @@
 import React from 'react'
-import { Icon, Header, Statistic, Segment, Grid, Flag } from 'semantic-ui-react'
+import API from '../API'
+import { Statistic, Grid } from 'semantic-ui-react'
 import CalendarLog from './CalendarLog';
 
-class Stats extends React.Component {
-  // <Header as='h2'>
-  //     <Icon name='chart bar' />
-  //     <Header.Content>DashBoard</Header.Content>
-  // </Header>
-    render() {
-        return (
+// props: all_logs
+class Stats extends React.Component { 
+  state = {
+    fav_country: undefined,
+    fav_variety: undefined
+  }
 
-            <Grid>
-                <Grid.Row columns={2}>
-                <Grid.Column width={1}>
-                </Grid.Column>
-                <Grid.Column width={14}>
-                  <CalendarLog />
-                </Grid.Column>
-                </Grid.Row>
+  componentDidMount() {
+    const userID = localStorage.getItem('user_id')
+    API.getFavorites(userID, 'favorite_wine_country')
+    .then(country => this.setState({fav_country: country}))
 
-                <Grid.Row columns={4}>
-                  <Grid.Column width={5}>
-                      <br/>
-                      <Statistic size='huge'>
-                        <Statistic.Value>79</Statistic.Value>
-                        <Statistic.Label><h1>Wine Logs</h1></Statistic.Label>
-                      </Statistic>
-                      <br/><br/><br/><br/>
-                  </Grid.Column>
+    API.getFavorites(userID, 'favorite_wine_variety')
+    .then(variety => this.setState({fav_variety: variety}))
+  }
 
-                  <Grid.Column width={5}>
-                      <br/>
-                      <Statistic size='huge'>
-                        <Statistic.Value>Italy</Statistic.Value>
-                        <Statistic.Label><h1>Favorite Wine Origins</h1></Statistic.Label>
-                      </Statistic>
-                      <br/><br/><br/><br/>
-                  </Grid.Column>
+  render() {
+    const { all_logs } = this.props
+    const { fav_country, fav_variety } = this.state
 
-                  <Grid.Column width={5}>
-                      <br/>
-                      <Statistic size='huge'>
-                        <Statistic.Value>Chianti</Statistic.Value>
-                        <Statistic.Label><h1>Favorate Grape Varieties</h1></Statistic.Label>
-                      </Statistic>
-                      <br/><br/><br/><br/>
-                  </Grid.Column>
+    return (
+        <Grid>
+            <Grid.Row columns={2}>
+            <Grid.Column width={1}>
+            </Grid.Column>
+            <Grid.Column width={14}>
+              <CalendarLog all_logs={this.props.all_logs}/>
+            </Grid.Column>
+            </Grid.Row>
 
-                  <Grid.Column width={1}>
-                  </Grid.Column>
-                </Grid.Row>
+            <Grid.Row columns={4}>
+              <Grid.Column width={5}>
+                  <br/>
+                  <Statistic size='huge'>
+                    <Statistic.Value>
+                    {all_logs.length > 0 ? all_logs.length : '0️⃣'}
+                    </Statistic.Value>
+                    <Statistic.Label><h1>Wine Logs</h1></Statistic.Label>
+                  </Statistic>
+                  <br/><br/><br/><br/>
+              </Grid.Column>
 
+              <Grid.Column width={5}>
+                  <br/>
+                  <Statistic size='huge'>
+                    <Statistic.Value>
+                    {fav_country ? fav_country : '🤔'}
+                    </Statistic.Value>
+                    <Statistic.Label><h1>Favorite Wine Origins</h1></Statistic.Label>
+                  </Statistic>
+                  <br/><br/><br/><br/>
+              </Grid.Column>
 
+              <Grid.Column width={5}>
+                  <br/>
+                  <Statistic size='huge'>
+                    <Statistic.Value>
+                    {fav_variety ? fav_variety : '🤔'}
+                    </Statistic.Value>
+                    <Statistic.Label><h1>Favorate Grape Varieties</h1></Statistic.Label>
+                  </Statistic>
+                  <br/><br/><br/><br/>
+              </Grid.Column>
 
-            </Grid>
-
-
-        )
-    }
+              <Grid.Column width={1}>
+              </Grid.Column>
+            </Grid.Row>
+        </Grid>
+    )
+  }
 }
 
 export default Stats
 
-// What kind of wine
-// region of wines that I've tried
-// number of wines that I tried per month
+
