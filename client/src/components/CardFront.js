@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Flag} from 'semantic-ui-react'
-
-
-////// need to streamline the FLAG display/////////////////////////
+import { Card, Flag, Icon } from 'semantic-ui-react'
 
 export default class CardFront extends Component {
 
@@ -17,7 +14,8 @@ export default class CardFront extends Component {
                 <Card.Content>
                     <Card.Header>{this.props.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</Card.Header>
                     <Card.Meta>
-                        <span className='region-vintage'><Flag name='spain' />  {this.props.wineInfo.vintage}</span>
+                        {this.props.logInfo.starred ? <Icon name='like' color='red' style={{float: 'left'}}/> : null}
+                        <span className='region-vintage' style={{float: 'right'}}><Flag name='spain' />  {this.props.wineInfo.vintage}</span>
                     </Card.Meta>
                 </Card.Content>
             </Card>}

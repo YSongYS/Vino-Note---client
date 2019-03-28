@@ -51,7 +51,7 @@ class LogDetail extends React.Component {
                             <p><Rating maxRating={5} rating={this.props.logInfo.rating} icon='star' size='large' /></p>
                             <Header>Look</Header>
                             {this.state.lookInfo && <div>
-                              <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]+rose_colors[this.state.lookInfo.color]+red_colors[this.state.lookInfo.color]).split('undefined').join('')}</p>
+                              <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]||rose_colors[this.state.lookInfo.color]||red_colors[this.state.lookInfo.color])}</p>
                               <p>Clarity <Rating rating={this.state.lookInfo.clarity} maxRating={5} size='mini' disabled/></p>
                               <p>Viscosity <Rating rating={this.state.lookInfo.viscosity} maxRating={5} size='mini' disabled/></p>
                             </div>}

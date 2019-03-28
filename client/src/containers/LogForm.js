@@ -120,7 +120,7 @@ class LogForm extends React.Component {
                     {this.state.activeItem === 'Look'? <LookForm addLookNote={this.addLookNote} look_id={this.state.look_id}/> : <div></div>}
                     {this.state.activeItem === 'Smell'? <SmellForm addSmellNote={this.addSmellNote} smell_id={this.state.smell_id}/> : <div></div>}
                     {this.state.activeItem === 'Taste'? <TasteForm addTasteNote={this.addTasteNote} taste_id={this.state.taste_id}/> : <div></div>}
-                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote} wine_id={this.state.wine_id} look_id={this.state.look_id} smell_id={this.state.smell_id} taste_id={this.state.taste_id}/> : <div></div>}
+                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote} wine_id={this.state.wine_id} look_id={this.state.look_id} smell_id={this.state.smell_id} taste_id={this.state.taste_id} log_id={this.state.log_id}/>: <div></div>}
 
                   </div>
               </Grid.Column>

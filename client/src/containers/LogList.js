@@ -59,7 +59,7 @@ class LogList extends React.Component {
       window.addEventListener('scroll', this.handleScroll)
       API.getAllLogs(this.props.user_id)
           .then(all_logs => this.setState({
-            all_logs: all_logs
+            all_logs: all_logs.reverse()
           }))
     }
 
@@ -80,16 +80,23 @@ class LogList extends React.Component {
                 :null
                 }
 
-                <Card.Group>
-                {this.state.all_logs[0] && this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}} selectLog={this.props.selectLog}/>)}
-                </Card.Group>
+
+                {
+                  this.state.all_logs.length < 1 ?
+                  <div className='empty-user-logs'>
+                    <h1>Let's start to create your first wine log!</h1>
+                  </div> :
+                  <Card.Group>
+                   {this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}} selectLog={this.props.selectLog}/>)}
+                  </Card.Group>
+                }
 
                 <br/><br/><br/><br/>
                 <div ref={this.statsRef}>
                 <Divider horizontal> Statistics </Divider>
                 </div>
                 <br/><br/>
-                <Stats />
+                <Stats all_logs={this.state.all_logs}/>
                 <br/><br/><br/><br/>
 
             </div>

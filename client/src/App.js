@@ -51,6 +51,10 @@ class App extends React.Component {
             <Nav logOut={this.handleLogOut} toggleLoginState={this.toggleLoginState}/>
 
             <div className='page-container'>
+            <Route 
+              exact path="/" 
+              render={() => <Redirect to='/dash' />} 
+            />
             <Route
               exact path="/dash"
               render={(routeProps) => <LogList user_id={this.state.user_id} selectLog={this.selectLog} log_id={this.state.log_id}/>}

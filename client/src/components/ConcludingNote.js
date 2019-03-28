@@ -7,6 +7,7 @@ import API from '../API';
 // props: addConcludingNote, wine_id, look_id, smell_id, taste_id
 class ConcludingNote extends React.Component {
     state = {
+      log_id:this.props.log_id,
       rating: 0,
       concluding_note: '',
       starred: false,
@@ -24,12 +25,25 @@ class ConcludingNote extends React.Component {
         }))
     }
 
-    componentDidMount() {
-      this.getInfo("wine", 8)
-      this.getInfo("look", 7)
-      this.getInfo("smell", 7)
-      this.getInfo("taste", 7)
+    getPartialLogInfo = (model, modelId) => {
+      API.simpleShowFetch(model, modelId)
+        .then(modelInfo => this.setState({
+          rating: modelInfo.rating,
+          concluding_note: modelInfo.concluding_note,
+          starred: modelInfo.starred
+        }))
     }
+
+    componentDidMount() {
+        this.getInfo("wine", this.props.wine_id)
+        this.getInfo("look", this.props.look_id)
+        this.getInfo("smell", this.props.smell_id)
+        this.getInfo("taste", this.props.taste_id)
+
+        if (this.state.log_id) {
+          this.getPartialLogInfo('log', this.state.log_id)
+        }
+      }
 
     handleRatingChange = (event, {rating}) => {
       this.setState({
@@ -53,17 +67,19 @@ class ConcludingNote extends React.Component {
       return (
         <Grid textAlign='left'>
           <Grid.Column width={5}>
+          { !this.props.wine_id ?
+            null :
             <div className='final-log-info'>
-            { Object.values(this.state).includes(undefined) ? null :
-              <>
+                {this.state.wineInfo && <div>
                 <Image wrapped size='medium' src={this.state.wineInfo.image} />
                 <Header>{this.state.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</Header>
                 <p>{this.state.wineInfo.vintage}, {this.state.wineInfo.country}</p>
                 <p>{"$".repeat(this.state.wineInfo.price_range)}</p>
+                </div>}
 
                 <Header>Look</Header>
                 {this.state.lookInfo && <div>
-                  <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]+rose_colors[this.state.lookInfo.color]+red_colors[this.state.lookInfo.color]).split('undefined').join('')}</p>
+                  <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]||rose_colors[this.state.lookInfo.color]||red_colors[this.state.lookInfo.color])}</p>
                   <p>Clarity <Rating rating={this.state.lookInfo.clarity} maxRating={5} size='mini' disabled/></p>
                   <p>Viscosity <Rating rating={this.state.lookInfo.viscosity} maxRating={5} size='mini' disabled/></p>
                 </div>}
@@ -84,9 +100,9 @@ class ConcludingNote extends React.Component {
                   <p>Alcohol <Rating rating={this.state.tasteInfo.alcohol} maxRating={5} size='mini' disabled/></p>
                   <p>Body <Rating rating={this.state.tasteInfo.body} maxRating={5} size='mini' disabled/></p>
                 </div>}
-              </>
+              </div>
             }
-            </div>
+
           </Grid.Column>
 
           <Grid.Column width={10}>

@@ -21,13 +21,15 @@ class LogCard extends React.Component {
       }))
     }
 
+
+
+
     render() {
         return (
-            this.state.isClicked ?
-            <CardBack handleClick={this.handleClick} logInfo={this.state.logInfo} wineInfo={this.state.wineInfo} selectLog={this.props.selectLog}/> :
-            <CardFront handleClick={this.handleClick} wineInfo={this.state.wineInfo}/>
-        )
-    }
+            this.state.isClicked? <CardBack handleClick={this.handleClick} logInfo={this.state.logInfo} wineInfo={this.state.wineInfo} selectLog={this.props.selectLog}/> :
+            <CardFront handleClick={this.handleClick} logInfo={this.state.logInfo} wineInfo={this.state.wineInfo}/>
+    )
+  }
 }
 
 export default LogCard

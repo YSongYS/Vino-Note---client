@@ -1,6 +1,6 @@
 import React from 'react'
 import API from '../API'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Grid, Divider } from 'semantic-ui-react'
 
 class Setting extends React.Component {
     state = {
@@ -14,7 +14,7 @@ class Setting extends React.Component {
         var link = "mailto:dearMyFriend@example.com"
              + "?cc=myCCaddress@example.com"
              + "&subject=" + escape("Vino Note: Log your wine experience!")
-             + "&body=" + escape("Are you interested in logging your wine experience? \nDo you want to start your journey to be a great Sommelier? \nThis is your very first step point. \nJoin Vino Note today!")
+             + "&body=" + escape("Are you interested in logging your wine experience? I can show you an amazing app for logging your wines! <3 VINO NOTE <3")
              
         window.location.href = link;
     }
@@ -42,59 +42,67 @@ class Setting extends React.Component {
         }
 
         return (
-            <div className='user-setting'>
-                <div className='edit-form'>
-                    <h1>Edit Your Info</h1>
+            <Grid>
+                <Grid.Column width={6}>
+                <div className='user-setting'>
+                    <div className='edit-form'>
+                        <h1>Edit Your Info</h1>
 
-                    <Form onSubmit={(event) => API.userUpdate(event, userData)}>
-                        <Form.Field>
-                            <label className='login-form-label' >Email</label>
-                            <input 
-                                type='text' 
-                                placeholder='Email' 
-                                name='email' 
-                                value={this.state.email} 
-                                onChange={this.handleChange}
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label className='login-form-label' >Password</label>
-                            <input 
-                                type='password' 
-                                placeholder='Password' 
-                                name='password' 
-                                value={this.state.password} 
-                                onChange={this.handleChange}
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label className='login-form-label' >Password Confirmation</label>
-                            <input 
-                                type='password' 
-                                placeholder='Password Confirmation' 
-                                name='password_confirmation' 
-                                value={this.state.password_confirmation} 
-                                onChange={this.handleChange}
-                            />
-                        </Form.Field>
-                        <Form.Field>
-                            <label className='login-form-label' >Nickname</label>
-                            <input 
-                                type='text' 
-                                placeholder='Nickname'
-                                name='nickname' 
-                                value={this.state.nickname} 
-                                onChange={this.handleChange}
-                            />
-                        </Form.Field>
-                        <Button type='submit' color='olive' fluid>Edit</Button>
-                    </Form>
-                </div>
+                        <Form onSubmit={(event) => API.userUpdate(event, userData)}>
+                            <Form.Field>
+                                <label className='login-form-label' >Email</label>
+                                <input 
+                                    type='text' 
+                                    placeholder='Email' 
+                                    name='email' 
+                                    value={this.state.email} 
+                                    onChange={this.handleChange}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <label className='login-form-label' >Password</label>
+                                <input 
+                                    type='password' 
+                                    placeholder='Password' 
+                                    name='password' 
+                                    value={this.state.password} 
+                                    onChange={this.handleChange}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <label className='login-form-label' >Password Confirmation</label>
+                                <input 
+                                    type='password' 
+                                    placeholder='Password Confirmation' 
+                                    name='password_confirmation' 
+                                    value={this.state.password_confirmation} 
+                                    onChange={this.handleChange}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <label className='login-form-label' >Nickname</label>
+                                <input 
+                                    type='text' 
+                                    placeholder='Nickname'
+                                    name='nickname' 
+                                    value={this.state.nickname} 
+                                    onChange={this.handleChange}
+                                />
+                            </Form.Field>
+                            <Button type='submit' color='olive' fluid>Edit</Button>
+                        </Form>
+                    </div>
 
-                <div className='recommendation-setting' onClick={this.sendMail}>
-                    <h3>Recommend <span className='title-setting'>Vino Note</span> to your friends! 📮</h3>
+                    <div className='recommendation-setting' onClick={this.sendMail}>
+                        <h3>Recommend <span className='title-setting'>Vino Note</span> to your friends! 📮</h3>
+                    </div>
                 </div>
-            </div>
+                </Grid.Column>
+
+                <Grid.Column width={10}>
+                    <img src='setting_wine.jpg' alt='setting-wine' style={{height: '600px', width: 'auto'}}/>
+                </Grid.Column>
+            </Grid>
         )
     }
 }

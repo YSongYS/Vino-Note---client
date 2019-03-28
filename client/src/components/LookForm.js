@@ -19,7 +19,7 @@ class LookForm extends React.Component {
         API.simpleShowFetch("look", this.props.look_id)
           .then(info=>this.setState({
             colorCode:info.color,
-            colorName:(white_colors[info.color]+rose_colors[info.color]+red_colors[info.color]).split('undefined').join(''),
+            colorName:(white_colors[info.color]||rose_colors[info.color]||red_colors[info.color]),
             clarity:info.clarity,
             viscosity:info.viscosity
           }))

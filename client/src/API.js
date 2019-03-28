@@ -17,7 +17,7 @@ const signupSubmit = (event, data) => {
       localStorage.setItem('token', json.jwt)
       localStorage.setItem('user_id', json.user.id)
     } else {
-      alert("We've got error")
+      alert("There's no user found :(")
     }
   })
 }
@@ -52,7 +52,30 @@ const getAllLogs = (userId) => {
       Authorization: localStorage.getItem("token")
     }
   })
-    .then(res => res.json())}
+    .then(res => res.json())
+}
+
+const getFavorites = (userId, category) => {
+  const url_used = `${url}/users/${userId}/${category}`
+  return fetch(url_used,{
+    method:'GET',
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+  .then(res => res.text())
+}
+
+const getLogDates = (userId) => {
+  const url_used = `${url}/users/${userId}/logs_created_dates`
+  return fetch(url_used,{
+    method:'GET',
+    headers: {
+      Authorization: localStorage.getItem("token")
+    }
+  })
+  .then(res => res.json())
+}
 
 const simpleShowFetch = (model, modelId) => {
   const url_used = `${url}/${model}s/${modelId}`
@@ -159,7 +182,7 @@ const updateLog = (logInfo) => {
       Accept: 'application/json',
       Authorization: localStorage.token
     },
-    body: JSON.stringify({logInfo})
+    body: JSON.stringify(logInfo)
   }
   return fetch(`${url}/logs/${logInfo.id}`, options)
 }
@@ -168,6 +191,8 @@ export default {
   signupSubmit,
   loginSubmit,
   getAllLogs,
+  getFavorites,
+  getLogDates,
   simpleShowFetch,
   userUpdate,
   getUserInfo,
