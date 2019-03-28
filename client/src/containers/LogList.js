@@ -80,7 +80,8 @@ class LogList extends React.Component {
                 }
 
                 <Card.Group>
-                {this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}}/>)}
+                <LogCard logInfo={{id: 8, rating: 4, starred: false, concluding_note: "It was a great wine", user_id: 1, wine_id: 8, look_id: 651, smell_id: 38, taste_id: 837, created_at: "2019-03-27 19:01:08", updated_at: "2019-03-27 19:01:08"}}/>
+                
                 </Card.Group>
 
                 <br/><br/><br/><br/>

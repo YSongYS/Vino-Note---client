@@ -11,11 +11,11 @@ import ConcludingNote from '../components/ConcludingNote';
 class LogForm extends React.Component {
 
     state = {
-      activeItem:'Wine',
-      wine_id:undefined,
+      activeItem: 'Wine',
+      wine_id: undefined,
       smell_id: undefined,
-      look_id:undefined,
-      taste_id:undefined
+      look_id: undefined,
+      taste_id: undefined
     }
 
     addNewWine = (event, wineInfo) => {
@@ -80,7 +80,7 @@ class LogForm extends React.Component {
                     {this.state.activeItem === 'Look'? <LookForm addLookNote={this.addLookNote}/> : <div></div>}
                     {this.state.activeItem === 'Smell'? <SmellForm addSmellNote={this.addSmellNote}/> : <div></div>}
                     {this.state.activeItem === 'Taste'? <TasteForm addTasteNote={this.addTasteNote}/> : <div></div>}
-                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote}/> : <div></div>}
+                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote} wine_id={this.state.wine_id} look_id={this.state.look_id} smell_id={this.state.smell_id} taste_id={this.state.taste_id}/> : <div></div>}
                   </div>
               </Grid.Column>
           </Grid>
