@@ -311,3 +311,13 @@ tspan {
 .ui .rating :focus {
   outline: none;
 }
+
+/* concluding note */
+.final-log-info {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin-left: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}

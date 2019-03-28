@@ -11,12 +11,11 @@ import ConcludingNote from '../components/ConcludingNote';
 class LogForm extends React.Component {
 
     state = {
-      activeItem:'Wine',
-      wine_id:undefined,
+      activeItem: 'Wine',
+      wine_id: undefined,
       smell_id: undefined,
-      look_id:undefined,
-      taste_id:undefined,
-      images:[]
+      look_id: undefined,
+      taste_id: undefined
     }
 
     addNewWine = (event, wineInfo) => {
@@ -80,11 +79,13 @@ class LogForm extends React.Component {
 
               <Grid.Column stretched width={14}>
                   <div>
+
                     {this.state.activeItem === 'Wine'? <WineInfo addNewWine={this.addNewWine} wine_id={this.state.wine_id}/> : <div></div>}
                     {this.state.activeItem === 'Look'? <LookForm addLookNote={this.addLookNote} look_id={this.state.look_id}/> : <div></div>}
                     {this.state.activeItem === 'Smell'? <SmellForm addSmellNote={this.addSmellNote} smell_id={this.state.smell_id}/> : <div></div>}
                     {this.state.activeItem === 'Taste'? <TasteForm addTasteNote={this.addTasteNote} taste_id={this.state.taste_id}/> : <div></div>}
-                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote}/> : <div></div>}
+                    {this.state.activeItem === 'Concluding note'? <ConcludingNote addConcludingNote={this.addConcludingNote} wine_id={this.state.wine_id} look_id={this.state.look_id} smell_id={this.state.smell_id} taste_id={this.state.taste_id}/> : <div></div>}
+
                   </div>
               </Grid.Column>
           </Grid>

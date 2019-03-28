@@ -1,7 +1,7 @@
 import React from 'react';
 import API from '../API';
 import { white_colors, red_colors, rose_colors } from '../Library_terms'
-import { Header, Image, Modal, Button, Icon, Rating, Divider } from 'semantic-ui-react'
+import { Header, Image, Modal, Button, Icon, Rating } from 'semantic-ui-react'
 
 class LogDetail extends React.Component {
     state = {
