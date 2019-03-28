@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Rating, Image, Button } from 'semantic-ui-react';
-import { category_explained } from '../Library_terms'
+import { category_explained } from '../Library_terms';
+import API from '../API';
 
 /// build out the full list of options
 
@@ -17,6 +18,19 @@ class TasteForm extends React.Component {
       this.setState({
         [name]:rating
       })
+    }
+
+    componentDidMount(){
+      if (!!this.props.taste_id) {
+        API.simpleShowFetch("taste", this.props.taste_id)
+          .then(info=>{this.setState({
+            sweetness: parseInt(info.sweetness),
+            acidity: parseInt(info.acidity),
+            tannin: parseInt(info.tannin),
+            alcohol: parseInt(info.alcohol),
+            body: parseInt(info.body)
+          })})
+      }
     }
 
     render() {

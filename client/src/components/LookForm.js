@@ -1,5 +1,6 @@
 import React from 'react';
 import { Divider, Grid, Button, Rating, Icon  } from 'semantic-ui-react';
+import API from '../API';
 import { white_colors, red_colors, rose_colors } from '../Library_terms'
 
 /// build out the full list of options
@@ -11,6 +12,18 @@ class LookForm extends React.Component {
       colorName: "Not yet selected",
       clarity: 3,
       viscosity: 2
+    }
+
+    componentDidMount(){
+      if (!!this.props.look_id) {
+        API.simpleShowFetch("look", this.props.look_id)
+          .then(info=>this.setState({
+            colorCode:info.color,
+            colorName:(white_colors[info.color]+rose_colors[info.color]+red_colors[info.color]).split('undefined').join(''),
+            clarity:info.clarity,
+            viscosity:info.viscosity
+          }))
+      }
     }
 
     handleSelectColor = (color,white_colors,rose_colors,red_colors) => {
@@ -104,7 +117,7 @@ class LookForm extends React.Component {
               <strong> Viscosity </strong>
               <Rating size='large' rating={this.state.viscosity} maxRating={5}/><br /><br />
               <input type='range' min={0} max={5} value={this.state.viscosity} onChange={this.handleViscosityChange} /><br /><br /><br />
-              <Button color='dark grey' onClick={(event)=>this.props.addLookNote(event, this.state)}>Confirm</Button>
+              <Button color='dark grey' onClick={(event)=>this.props.addLookNote(event, {color:this.state.colorCode, clarity:this.state.clarity, viscosity:this.state.viscosity})}>Confirm</Button>
             </div>
           </Grid.Column>
         </Grid>

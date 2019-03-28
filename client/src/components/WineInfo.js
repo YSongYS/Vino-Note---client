@@ -1,6 +1,7 @@
 import React from 'react';
 import { Divider, Grid, Image, Container, Button, Form, Segment, Dropdown } from 'semantic-ui-react';
-import CameraApp from './CameraApp'
+import CameraApp from './CameraApp';
+import API from '../API';
 import { options_Country, options_Variety, options_Price } from '../Library_terms'
 
 /// build out the full list of options
@@ -16,6 +17,13 @@ class WineInfo extends React.Component {
       country:"",
       price_range:"",
       image:""
+    }
+
+    componentDidMount(){
+      if (!!this.props.wine_id) {
+        API.simpleShowFetch("wine", this.props.wine_id)
+          .then(info=>this.setState({...info}))
+      }
     }
 
     handleChange = (event) => {

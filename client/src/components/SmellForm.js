@@ -1,6 +1,7 @@
 import React from 'react';
 import SmellTable from './SmellTable'
 import { Radio, Grid, Form, Button, Popup } from 'semantic-ui-react';
+import API from '../API';
 import { second_smells, third_smells, color_scheme } from '../Library_terms'
 
 
@@ -22,6 +23,21 @@ class SmellForm extends React.Component {
   }
 
   componentDidMount() { //WHEEEEEEEEEL
+
+    if (!!this.props.smell_id) {
+      API.simpleShowFetch("smell", this.props.smell_id)
+        .then(info=>this.setState({
+          primary_2: info.primary_level_two,
+          primary_3: info.primary_level_three,
+          secondary_2: info.secondary_level_two,
+          secondary_3: info.secondary_level_three,
+          tertiary_2: info.tertiary_level_two,
+          tertiary_3: info.tertiary_level_three,
+          flaw_2: info.flaw_level_two,
+          flaw_3: info.flaw_level_three
+        }))
+    }
+
     let mainWheel = new window.wheelnav('divWheel-00', null, 500);
     let primary = new window.wheelnav('divWheel-01', mainWheel.raphael);
     let secondary = new window.wheelnav('divWheel-02', primary.raphael);
