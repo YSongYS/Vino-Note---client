@@ -1,6 +1,7 @@
 import React from 'react'
 import API from '../API'
 import { Grid, Menu } from 'semantic-ui-react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import WineInfo from '../components/WineInfo';
 import LookForm from '../components/LookForm';
 import SmellForm from '../components/SmellForm';
@@ -15,7 +16,22 @@ class LogForm extends React.Component {
       wine_id: undefined,
       smell_id: undefined,
       look_id: undefined,
-      taste_id: undefined
+      taste_id: undefined,
+      rating:undefined,
+      starred:undefined,
+      concluding_note:undefined,
+      user_id:localStorage.user_id,
+      wineSaved:false,
+      log_id:this.props.log_id
+    }
+
+    componentDidMount(){
+      if (this.state.log_id) {
+        API.simpleShowFetch('log', this.state.log_id)
+          .then(logInfo=>{
+            this.setState({...logInfo})
+          })
+      }
     }
 
     addNewWine = (event, wineInfo) => {
@@ -57,7 +73,26 @@ class LogForm extends React.Component {
 
     addConcludingNote = (event, concludingInfo) => {
       event.preventDefault()
-      console.log(concludingInfo)
+      this.setState({
+        rating:concludingInfo.rating,
+        starred:concludingInfo.starred,
+        concluding_note:concludingInfo.concluding_note
+      },this.saveWine)
+    }
+
+    saveWine = () => {
+      if (this.state.log_id) {
+        API.updateLog(this.state)
+          .then(()=>this.setState({
+            wineSaved:true
+          },this.props.unselectLog))
+      }
+      else {
+        API.createLog(this.state)
+          .then(()=>this.setState({
+            wineSaved:true
+          }))
+      }
     }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -66,6 +101,7 @@ class LogForm extends React.Component {
     render() {
         return (
           <Grid>
+              {this.state.wineSaved? <Redirect to='/dash' /> : null}
               <Grid.Column width={2}>
                   <Menu fluid vertical tabular>
                     <Menu.Item name='Wine' active={this.state.activeItem === 'Wine'} onClick={this.handleItemClick} />

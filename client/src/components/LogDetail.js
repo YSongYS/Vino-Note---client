@@ -17,10 +17,6 @@ class LogDetail extends React.Component {
         this.setState({open: false})
     }
 
-    onEdit = () => {
-        console.log("Go to pre-filled LogForm page")
-    }
-
     getInfo = (model, modelId) => {
       API.simpleShowFetch(model, modelId)
         .then(modelInfo => this.setState({
@@ -82,7 +78,7 @@ class LogDetail extends React.Component {
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button color='green' onClick={this.onEdit}>
+                        <Button color='green' onClick={()=>this.props.selectLog(this.props.logInfo.id)}>
                             Edit
                         </Button>
                         <Button color='red' onClick={this.onClose}>

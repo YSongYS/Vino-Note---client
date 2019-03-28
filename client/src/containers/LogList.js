@@ -1,6 +1,7 @@
 import React from 'react'
 import LogCard from '../components/LogCard';
 import Stats from '../components/Stats';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import API from '../API';
 import { Card, Divider, Button, Icon } from 'semantic-ui-react'
 
@@ -65,7 +66,7 @@ class LogList extends React.Component {
     render() {
         return (
             <div className='card-list'>
-
+                {this.props.log_id? <Redirect to='/create' /> : null}
                 {this.state.displayDownButton?
                 <Button className='dashboard-Down' color='olive' onClick={this.handleScrollToStats} size='small' >
                   <Icon name='angle double down'/>See Stats
@@ -80,7 +81,7 @@ class LogList extends React.Component {
                 }
 
                 <Card.Group>
-                {this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}}/>)}
+                {this.state.all_logs[0] && this.state.all_logs.map(logObject=><LogCard logInfo={{...logObject}} selectLog={this.props.selectLog}/>)}
                 </Card.Group>
 
                 <br/><br/><br/><br/>

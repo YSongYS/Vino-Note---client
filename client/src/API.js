@@ -137,6 +137,33 @@ const createSmell = (smellInfo) => {
   .then(res => res.json())
 }
 
+const createLog = (logInfo) => {
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify(logInfo)
+  }
+  return fetch(`${url}/logs`, options)
+  .then(res => res.json())
+}
+
+const updateLog = (logInfo) => {
+  const options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify({logInfo})
+  }
+  return fetch(`${url}/logs/${logInfo.id}`, options)
+}
+
 export default {
   signupSubmit,
   loginSubmit,
@@ -147,5 +174,7 @@ export default {
   createWine,
   findLook,
   findTaste,
-  createSmell
+  createSmell,
+  createLog,
+  updateLog
 }

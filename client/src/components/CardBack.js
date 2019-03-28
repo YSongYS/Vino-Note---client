@@ -39,7 +39,7 @@ export default class CardBack extends Component {
                 </Card.Content>
                 </Card>
 
-                {this.state.detailClicked ? <LogDetail wineInfo={this.props.wineInfo} logInfo={this.props.logInfo}/> : null}
+                {this.state.detailClicked ? <LogDetail wineInfo={this.props.wineInfo} logInfo={this.props.logInfo} selectLog={this.props.selectLog}/> : null}
             </div>
         )
     }

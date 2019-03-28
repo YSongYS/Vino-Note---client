@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Nav from './containers/Nav';
 import Home from './containers/Home';
@@ -11,7 +11,8 @@ class App extends React.Component {
 
   state = {
     user_id: undefined,
-    loggedIn: false
+    loggedIn: false,
+    log_id:undefined
   }
 
   toggleLoginState = () => {
@@ -26,6 +27,18 @@ class App extends React.Component {
     window.localStorage.clear()
   }
 
+  selectLog = (logId) => {
+    this.setState({
+      log_id:logId
+    })
+  }
+
+  unselectLog = () => {
+    this.setState({
+      log_id:undefined
+    })
+  }
+
   componentDidMount() {
     this.toggleLoginState()
   }
@@ -36,15 +49,15 @@ class App extends React.Component {
           {this.state.loggedIn ?
             <React.Fragment>
             <Nav logOut={this.handleLogOut} toggleLoginState={this.toggleLoginState}/>
-            
+
             <div className='page-container'>
             <Route
               exact path="/dash"
-              render={(routeProps) => <LogList user_id={this.state.user_id}/>}
+              render={(routeProps) => <LogList user_id={this.state.user_id} selectLog={this.selectLog} log_id={this.state.log_id}/>}
             />
             <Route
               exact path="/create"
-              render={(routeProps) => <LogForm user_id={this.state.user_id}/>}
+              render={(routeProps) => <LogForm user_id={this.state.user_id} log_id={this.state.log_id} unselectLog={this.unselectLog}/>}
             />
             <Route
               exact path="/setting"

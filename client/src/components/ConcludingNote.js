@@ -5,7 +5,7 @@ import API from '../API';
 
 /// build out the full list of options
 // props: addConcludingNote, wine_id, look_id, smell_id, taste_id
-class ConcludingNote extends React.Component { 
+class ConcludingNote extends React.Component {
     state = {
       rating: 0,
       concluding_note: '',
@@ -60,14 +60,14 @@ class ConcludingNote extends React.Component {
                 <Header>{this.state.wineInfo.name.split(' ').map(s=>s[0].toUpperCase()+s.slice(1)).join(' ')}</Header>
                 <p>{this.state.wineInfo.vintage}, {this.state.wineInfo.country}</p>
                 <p>{"$".repeat(this.state.wineInfo.price_range)}</p>
-  
+
                 <Header>Look</Header>
                 {this.state.lookInfo && <div>
                   <p><span className='color_plate_small' style={{backgroundColor:`${this.state.lookInfo.color}`}}></span>{(white_colors[this.state.lookInfo.color]+rose_colors[this.state.lookInfo.color]+red_colors[this.state.lookInfo.color]).split('undefined').join('')}</p>
                   <p>Clarity <Rating rating={this.state.lookInfo.clarity} maxRating={5} size='mini' disabled/></p>
                   <p>Viscosity <Rating rating={this.state.lookInfo.viscosity} maxRating={5} size='mini' disabled/></p>
                 </div>}
-  
+
                 <Header>Smell</Header>
                 {this.state.smellInfo && <div>
                   <p>Primary: {this.state.smellInfo.primary_level_two} - {this.state.smellInfo.primary_level_three}</p>
@@ -75,7 +75,7 @@ class ConcludingNote extends React.Component {
                   <p>Tertiary: {this.state.smellInfo.tertiary_level_two} - {this.state.smellInfo.tertiary_level_three}</p>
                   <p>Flaws: {this.state.smellInfo.flaw_level_two} - {this.state.smellInfo.flaw_level_three}</p>
                 </div>}
-  
+
                 <Header>Taste</Header>
                 {this.state.tasteInfo && <div>
                   <p>Sweetness <Rating rating={this.state.tasteInfo.sweetness} maxRating={5} size='mini' disabled/></p>
