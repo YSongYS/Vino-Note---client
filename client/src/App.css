@@ -253,9 +253,9 @@ tspan {
 }
 
 /* CalendarLog */
-.react-calendar-heatmap .color-scale-1 { fill: #5cca3b; }
-.react-calendar-heatmap .color-scale-2 { fill: #d1963d; }
-.react-calendar-heatmap .color-scale-3 { fill: #88294d; }
+.react-calendar-heatmap .color-scale-1 { fill: #f3e5e8; }
+.react-calendar-heatmap .color-scale-2 { fill: #d19aa6; }
+.react-calendar-heatmap .color-scale-3 { fill: #af4f64; }
 .react-calendar-heatmap .color-scale-4 { fill: #8d0422; }
 
 /* Nav */
@@ -330,4 +330,16 @@ tspan {
   text-align: center;
   align-content: center;
   align-items: center;
+}
+
+/* stats */
+.color_calendar{
+  height:15px;
+  width:15px;
+  margin-right: 10px;
+  display:inline-block;
+  font-size:7px;
+  text-align: center;
+  justify-content: center;
+  word-wrap: break-word;
 }

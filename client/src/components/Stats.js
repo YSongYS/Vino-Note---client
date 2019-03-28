@@ -30,6 +30,13 @@ class Stats extends React.Component {
             </Grid.Column>
             <Grid.Column width={14}>
               <CalendarLog all_logs={this.props.all_logs}/>
+              <p>
+                <span style={{fontWeight: 700, marginRight: '5px'}}>Number of Logs: </span>
+                1 Log <span className='color_calendar' style={{backgroundColor: '#f3e5e8'}}></span>
+                2 Logs <span className='color_calendar' style={{backgroundColor: '#d19aa6'}}></span> 
+                3 Logs <span className='color_calendar' style={{backgroundColor: '#af4f64'}}></span> 
+                More than 4 Logs <span className='color_calendar' style={{backgroundColor: '#8d0422'}}></span>
+              </p>
             </Grid.Column>
             </Grid.Row>
 

@@ -56,7 +56,7 @@ class CalendarLog extends React.Component {
                     endDate={new Date('2019-09-31')}
                     values={this.state.date}
                     classForValue={this.classForValue}
-                    tooltipDataAttrs={(value) => this.handleMouseOver(value)}
+                    // tooltipDataAttrs={(value) => this.handleMouseOver(value)}
                 />
                  <ReactTooltip />
             </div>
