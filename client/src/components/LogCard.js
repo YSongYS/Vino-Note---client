@@ -25,7 +25,7 @@ class LogCard extends React.Component {
         return (
             this.state.isClicked ?
             <CardBack handleClick={this.handleClick} logInfo={this.state.logInfo} wineInfo={this.state.wineInfo}/> :
-            <CardFront handleClick={this.handleClick} wineInfo={this.state.wineInfo}/>
+            <CardFront handleClick={this.handleClick} logInfo={this.state.logInfo} wineInfo={this.state.wineInfo}/>
         )
     }
 }

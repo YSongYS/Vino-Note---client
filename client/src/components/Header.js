@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className="main-header">
             <p className='header-name'>
-            Vino Note            
+            <span style={{color: '#8d0422'}}>V</span>ino Note            
             </p>
         </div>
     )
